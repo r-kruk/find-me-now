@@ -1,8 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
-    <title>Find me now!</title>
-    <meta charset="utf-8">
+    <title>Panel użytkownika</title><meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -14,7 +13,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12 h1 text-center">
-            Tu kiedyś będzie bardzo ładny widok biurek. ;)
+            Tu kiedyś będzie plac zabaw dla użytkownika. Będą chuśtawki, lodziarnia i fontanna piwna.
         </div>
     </div>
 </div>

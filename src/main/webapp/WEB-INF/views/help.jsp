@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
-    <title>Find me now!</title>
+    <title>Pomoc</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -14,7 +14,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12 h1 text-center">
-            Tu kiedyś będzie bardzo ładny widok biurek. ;)
+            Tu kiedyś będzie bardzo dokładna i wyczerpująca temat pomoc. :P
         </div>
     </div>
 </div>
