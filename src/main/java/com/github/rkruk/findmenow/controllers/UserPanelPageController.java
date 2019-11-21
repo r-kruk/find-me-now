@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("user-panel")
+@RequestMapping("/user-panel")
 public class UserPanelPageController {
 
     @GetMapping
