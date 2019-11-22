@@ -11,6 +11,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode(of = "uuid")
+@ToString
 public abstract class BaseEntity {
 
     @Id
@@ -28,6 +29,7 @@ public abstract class BaseEntity {
     @PrePersist
     public void beforeSave() {
         createdOn = LocalDateTime.now();
+        updatedOn = LocalDateTime.now();
     }
 
     @PreUpdate

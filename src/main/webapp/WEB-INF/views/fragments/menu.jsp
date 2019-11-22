@@ -10,7 +10,7 @@
             <sec:authorize access="hasRole('ADMIN')">
                 <a href="/admin-panel" class="btn btn-primary"><i class="fa fa-cogs"></i> Panel administratora</a>
             </sec:authorize>
-            <a href="/help" class="btn btn-primary"><i class="fa fa-question"></i> Pomoc</a>
+            <a href="/help" class="btn btn-primary"><i class="fa fa-question-circle-o"></i> Pomoc</a>
         </div>
         <div class="col-11 float-left d-block d-md-none">
             <a href="/" class="btn btn-primary"><i class="fa fa-home"></i></a>
@@ -20,7 +20,7 @@
             <sec:authorize access="hasRole('ADMIN')">
                 <a href="/admin-panel" class="btn btn-primary"><i class="fa fa-cogs"></i></a>
             </sec:authorize>
-            <a href="/help" class="btn btn-primary"><i class="fa fa-question"></i></a>
+            <a href="/help" class="btn btn-primary"><i class="fa fa-question-circle-o"></i></a>
         </div>
         <div class="col-1 float-right d-none d-md-block">
             <sec:authorize access="isAnonymous()">
