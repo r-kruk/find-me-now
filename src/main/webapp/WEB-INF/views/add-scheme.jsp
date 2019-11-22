@@ -15,16 +15,16 @@
     <div class="row">
         <div class="col-1"></div>
         <div class="col-6">
-            <form method="post" enctype="multipart/form-data" action="/admin-panel/plans">
+            <form method="post" enctype="multipart/form-data" action="/admin-panel/add-scheme">
                 <div class="form-group">
-                    <label for="name">Nazwa planu</label>
-                    <input type="text" required name="name" id="name" class="form-control" placeholder="Podaj nazwę dla planu"/>
+                    <label for="name">Nazwa schematu</label>
+                    <input type="text" required name="name" id="name" class="form-control" placeholder="Podaj nazwę dla schematu"/>
                 </div>
                 <div class="form-group">
                     <label for="file">Plik</label>
-                    <input type="file" required name="file" id="file" class="form-control" placeholder="Wybierz plik z planem"/>
+                    <input type="file" required name="file" id="file" class="form-control"/>
                 </div>
-                <button class="btn btn-primary" type="submit">Dodaj</button>
+                <button class="btn btn-primary" type="submit">Wyślij</button>
                 <button class="btn btn-secondary" type="reset">Wyczyść dane</button>
                 <sec:csrfInput/>
             </form>

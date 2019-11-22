@@ -1,8 +1,10 @@
 package com.github.rkruk.findmenow.controllers;
 
+import com.github.rkruk.findmenow.services.SchemeService;
 import com.github.rkruk.findmenow.services.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,14 +15,17 @@ import org.springframework.web.multipart.MultipartFile;
 public class AdminPanelPageController {
 
     private StorageService storageService;
+    private SchemeService schemeService;
 
     @Autowired
-    public AdminPanelPageController(StorageService storageService) {
+    public AdminPanelPageController(StorageService storageService, SchemeService schemeService) {
         this.storageService = storageService;
+        this.schemeService = schemeService;
     }
 
     @GetMapping
-    public String showAdminPanelPage() {
+    public String showAdminPanelPage(Model model) {
+        model.addAttribute("allSchemes", schemeService.getAllSchemes());
         return "/WEB-INF/views/admin-panel.jsp";
     }
 
@@ -30,8 +35,8 @@ public class AdminPanelPageController {
     }
 
     @PostMapping("/add-scheme")
-    public String storeFileWithPlan(MultipartFile file) {
-        storageService.store(file);
+    public String storeFileWithPlan(String name, MultipartFile file) {
+        storageService.store(name, file);
         return "redirect:/admin-panel";
     }
 }

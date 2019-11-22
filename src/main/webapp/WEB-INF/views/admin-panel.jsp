@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
@@ -28,11 +29,13 @@
                     </tr>
                 </thead>
                 <tbody>
+                <c:forEach items="${allSchemes}" var="scheme" varStatus="schemeStatus">
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td><a href="#" class="btn btn-primary btn-sm">Zobacz</a></td>
+                        <td class="align-middle">${schemeStatus.count}</td>
+                        <td class="align-middle">${scheme.name}</td>
+                        <td><a href="/scheme?id=${scheme.id}" class="btn btn-primary btn-sm">Zobacz</a></td>
                     </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>

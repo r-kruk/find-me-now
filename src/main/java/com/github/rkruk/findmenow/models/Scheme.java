@@ -11,8 +11,8 @@ import javax.persistence.Table;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @ToString(callSuper = true)
-@Table(name = "places")
-public class Place extends BaseEntity {
+@Table(name = "schemes")
+public class Scheme extends BaseEntity {
 
     private String name;
     private String fileName;
