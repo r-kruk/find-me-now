@@ -13,7 +13,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12 h1 text-center">
-            Tu kiedyś będzie centrum dowodzenia wszechświatem.
+            <a href="/admin-panel/plans" class="btn btn-primary">Dodaj plan</a>
         </div>
     </div>
 </div>
