@@ -12,8 +12,29 @@
 <jsp:include page="fragments/menu.jsp"/>
 <div class="container">
     <div class="row">
-        <div class="col-12 h1 text-center">
-            <a href="/admin-panel/plans" class="btn btn-primary">Dodaj plan</a>
+        <div class="col-12 text-center">
+            <a href="/admin-panel/add-scheme" class="btn btn-primary">Dodaj schemat</a>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-hover table-bordered text-center">
+                <thead>
+                    <tr class="thead-dark">
+                        <th>Lp.</th>
+                        <th>Nazwa</th>
+                        <th>Szczegóły</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><a href="#" class="btn btn-primary btn-sm">Zobacz</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

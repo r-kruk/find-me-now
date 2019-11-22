@@ -24,12 +24,12 @@ public class AdminPanelPageController {
         return "/WEB-INF/views/admin-panel.jsp";
     }
 
-    @GetMapping("/plans")
+    @GetMapping("/add-scheme")
     public String showPlansManagementPage() {
-        return "/WEB-INF/views/plans.jsp";
+        return "/WEB-INF/views/add-scheme.jsp";
     }
 
-    @PostMapping("/plans")
+    @PostMapping("/add-scheme")
     public String storeFileWithPlan(MultipartFile file) {
         storageService.store(file);
         return "redirect:/admin-panel";
