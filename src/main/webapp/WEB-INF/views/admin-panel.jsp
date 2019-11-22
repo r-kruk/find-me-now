@@ -29,7 +29,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${allSchemes}" var="scheme" varStatus="schemeStatus">
+                <c:forEach items="${allSchemeDAOs}" var="scheme" varStatus="schemeStatus">
                     <tr>
                         <td class="align-middle">${schemeStatus.count}</td>
                         <td class="align-middle">${scheme.name}</td>
