@@ -2,6 +2,7 @@ package com.github.rkruk.findmenow.controllers;
 
 import com.github.rkruk.findmenow.services.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
@@ -26,7 +27,11 @@ public class ProvidingSchemaController {
     @GetMapping(produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody
     public byte[] showScheme(Long id) throws IOException {
-        InputStream in = storageService.getFile(id).getInputStream();
-        return FileCopyUtils.copyToByteArray(in);
+        Resource resource = storageService.getFile(id);
+        if (resource.exists()) {
+            InputStream in = resource.getInputStream();
+            return FileCopyUtils.copyToByteArray(in);
+        }
+        return new byte[0];
     }
 }
