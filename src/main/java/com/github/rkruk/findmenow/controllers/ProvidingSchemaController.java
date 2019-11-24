@@ -28,7 +28,7 @@ public class ProvidingSchemaController {
     @ResponseBody
     public byte[] showScheme(Long id) throws IOException {
         Resource resource = storageService.getFile(id);
-        if (resource.exists()) {
+        if (resource != null && resource.exists()) {
             InputStream in = resource.getInputStream();
             return FileCopyUtils.copyToByteArray(in);
         }

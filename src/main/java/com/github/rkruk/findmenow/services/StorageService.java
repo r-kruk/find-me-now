@@ -8,6 +8,7 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.persistence.EntityNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -41,6 +42,10 @@ public class StorageService {
 
     public Resource getFile(Long id) throws IOException {
         Scheme scheme = schemeRepository.getOne(id);
-        return resourceLoader.getResource("file:" + STORAGE_FOLDER + scheme.getFileName());
+        try {
+            return resourceLoader.getResource("file:" + STORAGE_FOLDER + scheme.getFileName());
+        } catch (EntityNotFoundException enfe) {
+            return null;
+        }
     }
 }
