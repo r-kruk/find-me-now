@@ -50,7 +50,7 @@ public class AdminPanelPageController {
 
     @PostMapping("/add-scheme")
     public String storeFileWithPlan(String name, MultipartFile file) {
-        storageService.store(name, file);
+        storageService.storeFile(name, file);
         return "redirect:/admin-panel";
     }
 }
