@@ -40,7 +40,7 @@ public class StorageService {
         return true;
     }
 
-    public Resource getFile(Long id) throws IOException {
+    public Resource getFile(Long id) {
         Scheme scheme = schemeRepository.getOne(id);
         try {
             return resourceLoader.getResource("file:" + STORAGE_FOLDER + scheme.getFileName());

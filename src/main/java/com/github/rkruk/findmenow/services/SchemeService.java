@@ -20,4 +20,8 @@ public class SchemeService {
     public List<Scheme> getAllSchemes() {
         return schemeRepository.findAll();
     }
+
+    public Scheme getSchemeById(Long id) {
+        return schemeRepository.getOne(id);
+    }
 }
