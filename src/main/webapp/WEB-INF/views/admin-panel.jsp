@@ -33,7 +33,7 @@
                     <tr>
                         <td class="align-middle">${schemeStatus.count}</td>
                         <td class="align-middle">${scheme.name}</td>
-                        <td><a href="/scheme?id=${scheme.id}" class="btn btn-primary btn-sm">Zobacz</a></td>
+                        <td><a href="/scheme-details?id=${scheme.id}" class="btn btn-primary btn-sm">Zobacz</a></td>
                     </tr>
                 </c:forEach>
                 </tbody>
