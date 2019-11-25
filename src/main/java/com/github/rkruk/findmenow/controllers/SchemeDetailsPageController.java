@@ -25,7 +25,6 @@ public class SchemeDetailsPageController {
         Scheme scheme = schemeService.getSchemeById(id);
         SchemeDAO schemeDAO = new SchemeDAO(scheme.getId(), scheme.getName(), scheme.getFileName());
         model.addAttribute("schemeDAO", schemeDAO);
-        model.addAttribute("id", id);
         return "/WEB-INF/views/scheme-details.jsp";
     }
 }
