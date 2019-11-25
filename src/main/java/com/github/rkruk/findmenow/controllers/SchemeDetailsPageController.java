@@ -23,7 +23,12 @@ public class SchemeDetailsPageController {
     @GetMapping
     public String showSchemeDetailsPage(Model model, Long id) {
         Scheme scheme = schemeService.getSchemeById(id);
-        SchemeDAO schemeDAO = new SchemeDAO(scheme.getId(), scheme.getName(), scheme.getFileName());
+        SchemeDAO schemeDAO = new SchemeDAO(
+                scheme.getId(),
+                scheme.getName(),
+                scheme.getFileName(),
+                scheme.getDescription(),
+                scheme.getActive());
         model.addAttribute("schemeDAO", schemeDAO);
         return "/WEB-INF/views/scheme-details.jsp";
     }

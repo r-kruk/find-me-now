@@ -12,4 +12,6 @@ public class SchemeDAO {
     private Long id;
     private String name;
     private String fileName;
+    private String description;
+    private Boolean active;
 }
