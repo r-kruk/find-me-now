@@ -37,7 +37,9 @@ public class AdminPanelPageController {
                     new SchemeDAO(
                             scheme.getId(),
                             scheme.getName(),
-                            scheme.getFileName()));
+                            scheme.getFileName(),
+                            scheme.getDescription(),
+                            scheme.getActive()));
         }
         model.addAttribute("allSchemeDAOs", allSchemeDAOs);
         return "/WEB-INF/views/admin-panel.jsp";
@@ -49,8 +51,8 @@ public class AdminPanelPageController {
     }
 
     @PostMapping("/add-scheme")
-    public String storeFileWithPlan(String name, MultipartFile file) {
-        storageService.storeFile(name, file);
+    public String storeFileWithPlan(String name, MultipartFile file, String description) {
+        storageService.storeFile(name, file, description);
         return "redirect:/admin-panel";
     }
 }
