@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
@@ -13,8 +14,21 @@
 <jsp:include page="fragments/menu.jsp"/>
 <div class="container">
     <div class="row">
-        <div class="col-12 h1 text-center">
-            Tu kiedyś będzie bardzo ładny widok biurek. ;)
+        <div class="col-1">
+            <c:forEach items="${allActiveSchemeDAOs}" var="schemeDAO" varStatus="schemeDAOStatus">
+                <a href="/?id=${schemeDAO.id}" class="btn btn-primary float-right">${schemeDAO.name}</a>
+                <br>
+                <br>
+            </c:forEach>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-10 h1 text-center">
+            <c:if test="${visibleSchemeId == 0}">
+                <img src="/scheme?id=${allActiveSchemeDAOs.get(0).id}" class="img-fluid" alt="Scheme">
+            </c:if>
+            <c:if test="${visibleSchemeId != 0}">
+                <img src="/scheme?id=${visibleSchemeId}" class="img-fluid" alt="Scheme">
+            </c:if>
         </div>
     </div>
 </div>

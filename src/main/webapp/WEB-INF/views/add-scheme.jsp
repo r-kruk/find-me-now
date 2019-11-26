@@ -20,9 +20,13 @@
                     <label for="name">Nazwa schematu</label>
                     <input type="text" required name="name" id="name" class="form-control" placeholder="Podaj nazwę dla schematu"/>
                 </div>
-                <div class="form-group">
+               <div class="form-group">
                     <label for="file">Plik</label>
                     <input type="file" required name="file" id="file" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="description">Nazwa schematu</label>
+                    <input type="text" name="description" id="description" class="form-control" placeholder="Podaj opis schematu (opcjonalne)"/>
                 </div>
                 <button class="btn btn-primary" type="submit">Wyślij</button>
                 <button class="btn btn-secondary" type="reset">Wyczyść dane</button>

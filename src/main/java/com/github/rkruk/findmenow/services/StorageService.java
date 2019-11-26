@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityNotFoundException;
@@ -28,12 +29,14 @@ public class StorageService {
 
     private static String STORAGE_FOLDER = "c:\\temp\\";
 
-    public boolean storeFile(String name, MultipartFile file) {
+    public boolean storeFile(String name,
+                             MultipartFile file,
+                             @RequestParam(required = false, defaultValue = "") String description) {
         try {
             byte[] bytes = file.getBytes();
             Path path = Paths.get(STORAGE_FOLDER + file.getOriginalFilename());
             Files.write(path, bytes);
-            schemeRepository.save(new Scheme(name, file.getOriginalFilename()));
+            schemeRepository.save(new Scheme(name, file.getOriginalFilename(), description, false));
         } catch (IOException e) {
             return false;
         }

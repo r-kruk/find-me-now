@@ -1,7 +1,6 @@
 package com.github.rkruk.findmenow.controllers;
 
 import com.github.rkruk.findmenow.DAOs.SchemeDAO;
-import com.github.rkruk.findmenow.models.Scheme;
 import com.github.rkruk.findmenow.services.SchemeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,8 +21,7 @@ public class SchemeDetailsPageController {
 
     @GetMapping
     public String showSchemeDetailsPage(Model model, Long id) {
-        Scheme scheme = schemeService.getSchemeById(id);
-        SchemeDAO schemeDAO = new SchemeDAO(scheme.getId(), scheme.getName(), scheme.getFileName());
+        SchemeDAO schemeDAO = schemeService.getSchemeDAOById(id);
         model.addAttribute("schemeDAO", schemeDAO);
         return "/WEB-INF/views/scheme-details.jsp";
     }

@@ -18,7 +18,7 @@
     <br>
     <div class="row">
         <div class="col-12 text-center">
-            <img src="/scheme?id=${schemeDAO.id}" class="img-fluid" alt="Responsive image">
+            <img src="/scheme?id=${schemeDAO.id}" class="img-fluid" alt="Scheme">
         </div>
     </div>
 </div>
