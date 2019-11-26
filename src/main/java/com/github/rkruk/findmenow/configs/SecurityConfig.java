@@ -28,6 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/help").permitAll()
                 .antMatchers("/login").anonymous()
+                .antMatchers("/register").anonymous()
                 .antMatchers("/admin-panel").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
@@ -43,9 +44,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-//                .passwordEncoder(passwordEncoder())
-                .usersByUsernameQuery("SELECT username, password FROM users WHERE username = ?")
-                .authoritiesByUsernameQuery("SELECT username, 'ADMIN' FROM users WHERE username = ?");
+                .passwordEncoder(passwordEncoder())
+                .usersByUsernameQuery("SELECT username, password, 'true' FROM users WHERE username = ?")
+                .authoritiesByUsernameQuery("SELECT username, 'ROLE_ADMIN' FROM users WHERE username = ?");
 
 //                .authoritiesByUsernameQuery("SELECT username, 'ROLE_USER' FROM users WHERE username = ?");
 //          above commented line was in pattern project.
@@ -53,10 +54,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-//    }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    }
 
 //          BEAN & Password will be used for encoded users and password
 
