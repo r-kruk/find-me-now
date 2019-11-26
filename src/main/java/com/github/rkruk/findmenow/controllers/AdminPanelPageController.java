@@ -1,7 +1,6 @@
 package com.github.rkruk.findmenow.controllers;
 
 import com.github.rkruk.findmenow.DAOs.SchemeDAO;
-import com.github.rkruk.findmenow.models.Scheme;
 import com.github.rkruk.findmenow.services.SchemeService;
 import com.github.rkruk.findmenow.services.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -30,17 +28,7 @@ public class AdminPanelPageController {
 
     @GetMapping
     public String showAdminPanelPage(Model model) {
-        List<Scheme> allSchemes = schemeService.getAllSchemes();
-        List<SchemeDAO> allSchemeDAOs = new ArrayList<>();
-        for (Scheme scheme : allSchemes) {
-            allSchemeDAOs.add(
-                    new SchemeDAO(
-                            scheme.getId(),
-                            scheme.getName(),
-                            scheme.getFileName(),
-                            scheme.getDescription(),
-                            scheme.getActive()));
-        }
+        List<SchemeDAO> allSchemeDAOs = schemeService.getAllSchemeDAOs();
         model.addAttribute("allSchemeDAOs", allSchemeDAOs);
         return "/WEB-INF/views/admin-panel.jsp";
     }
