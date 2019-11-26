@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User extends BaseEntity {
 
-    private String login;
+    private String username;
     private String password;
     @Column(name = "first_name")
     private String firstName;
