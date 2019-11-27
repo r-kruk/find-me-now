@@ -13,38 +13,71 @@
 <jsp:include page="fragments/menu.jsp"/>
 <div class="container">
     <div class="row">
-        <div class="col-12 text-center">
-            <a href="/admin-panel/add-scheme" class="btn btn-primary">Dodaj schemat</a>
+        <div class="col-1">
+            <a href="/admin-panel?tab=0" class="btn btn-primary float-right">Schematy</a>
+            <br>
+            <br>
+            <a href="/admin-panel?tab=1" class="btn btn-primary float-right">Użytkownicy</a>
         </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-12">
-            <table class="table table-hover table-bordered text-center">
-                <thead>
+        <div class="col-1"></div>
+        <div class="col-10 text-center">
+            <c:if test="${tabNumber == 0}">
+                <a href="/admin-panel/add-scheme" class="btn btn-primary">Dodaj schemat</a>
+                <br>
+                <br>
+                <table class="table table-hover table-bordered text-center">
+                    <thead>
+                        <tr class="thead-dark">
+                            <th>Lp.</th>
+                            <th>Aktywny</th>
+                            <th>Nazwa</th>
+                            <th>Szczegóły</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${allSchemeDAOs}" var="scheme" varStatus="schemeStatus">
+                        <tr>
+                            <td class="align-middle">${schemeStatus.count}</td>
+                            <c:if test="${scheme.active == true}">
+                                <td>TAK</td>
+                            </c:if>
+                            <c:if test="${scheme.active != true}">
+                                <td>NIE</td>
+                            </c:if>
+                            <td class="align-middle">${scheme.name}</td>
+                            <td><a href="/scheme-details?id=${scheme.id}" class="btn btn-primary btn-sm">Zobacz</a></td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </c:if>
+            <c:if test="${tabNumber == 1}">
+                <table class="table table-hover table-bordered text-center">
+                    <thead>
                     <tr class="thead-dark">
                         <th>Lp.</th>
                         <th>Aktywny</th>
-                        <th>Nazwa</th>
+                        <th>Login</th>
                         <th>Szczegóły</th>
                     </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${allSchemeDAOs}" var="scheme" varStatus="schemeStatus">
-                    <tr>
-                        <td class="align-middle">${schemeStatus.count}</td>
-                        <c:if test="${scheme.active == true}">
-                            <td>TAK</td>
-                        </c:if>
-                        <c:if test="${scheme.active != true}">
-                            <td>NIE</td>
-                        </c:if>
-                        <td class="align-middle">${scheme.name}</td>
-                        <td><a href="/scheme-details?id=${scheme.id}" class="btn btn-primary btn-sm">Zobacz</a></td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${allUserDAOs}" var="user" varStatus="userStatus">
+                        <tr>
+                            <td class="align-middle">${userStatus.count}</td>
+<%--                            <c:if test="${user.active == true}">--%>
+                                <td>TAK</td>
+<%--                            </c:if>--%>
+<%--                            <c:if test="${user.active != true}">--%>
+<%--                                <td>NIE</td>--%>
+<%--                            </c:if>--%>
+                            <td class="align-middle">${user.username}</td>
+                            <td><a href="/user-details?id=${user.id}" class="btn btn-primary btn-sm">Zobacz</a></td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </c:if>
         </div>
     </div>
 </div>
