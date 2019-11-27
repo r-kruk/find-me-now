@@ -28,6 +28,8 @@ public class ModelMapper {
                 user.getUsername(),
                 user.getFirstName(),
                 user.getLastName(),
+                user.getActive(),
+                user.getRole(),
                 placeId);
     }
 }

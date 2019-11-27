@@ -13,5 +13,7 @@ public class UserDAO {
     private String username;
     private String firstName;
     private String lastName;
+    private Boolean active;
+    private String role;
     private Long placeId;
 }

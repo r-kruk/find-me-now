@@ -27,8 +27,8 @@ public class RegisterPageController {
     }
 
     @PostMapping
-    public String createUser(String username, String password, String firstName, String lastName) {
-        userService.registerUser(username, password, firstName, lastName);
+    public String createUser(String username, String password, String firstName, String lastName, boolean active, String role) {
+        userService.registerUser(username, password, firstName, lastName, active, role, null);
         return "redirect:/login";
     }
 
