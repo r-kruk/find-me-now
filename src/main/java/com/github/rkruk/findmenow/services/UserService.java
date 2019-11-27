@@ -22,10 +22,21 @@ public class UserService {
         this.modelMapper = modelMapper;
     }
 
-
     public void registerUser(String username, String password, String firstName, String lastName) {
         userRepository.save(new User(username, "{noop}"+password, firstName, lastName, null));
     }
+
+    public UserDAO getOne(Long id) {
+        User user = userRepository.getOne(id);
+        UserDAO userDAO = new UserDAO(user.getId(), user.getUsername(), user.getFirstName(), user.getLastName(), null);
+        return userDAO;
+    }
+
+    public Long getIdOfLoggedUser(String username) {
+        User user = userRepository.findByUsernameEquals(username);
+        return user.getId();
+    }
+
 
     public List<UserDAO> getAllUserDAOs() {
         List<User> allUsers = userRepository.findAll();
@@ -35,4 +46,5 @@ public class UserService {
         }
         return allUserDAOs;
     }
+
 }
