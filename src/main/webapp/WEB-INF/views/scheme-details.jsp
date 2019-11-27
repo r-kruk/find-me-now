@@ -12,6 +12,7 @@
 <jsp:include page="fragments/header.jsp"/>
 <jsp:include page="fragments/menu.jsp"/>
 <div class="container">
+    <br>
     <div class="row">
         <div class="col-12 text-center h3">${schemeDAO.name}</div>
     </div>
