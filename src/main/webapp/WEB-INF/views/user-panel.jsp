@@ -18,33 +18,30 @@
         <div class="col-10" style="padding-bottom: 20px"><h2>Twoje dane</h2></div>
         <div class="col-1"></div>
     </div>
-     <div class="row">
+    <br>
+    <br>
+    <div class="row">
         <div class="col-1"></div>
-        <div class="col-6">
-            <div class="col-12 text-center h3">${user.username}</div>
-            <div class="col-12 text-center h3" href="/?id=${userDAO.username}"></div>
-            <div class="col-12 text-center h3">${userDAO.lastName}</div>
-            <form method="get" action="/register">
-                <div class="form-group">
-                    <label for="username">Nazwa użytkownika</label>
-                    <input type="text" required name="username" id="username"/>
-                </div>
-
-                <div class="form-group">
-                    <label for="firstName">Imię</label>
-                    <input type="text" required name="firstName" id="firstName" class="form-control" placeholder="Podaj imię"/>
-                </div>
-                <div class="form-group">
-                    <label for="lastName">Nazwisko</label>
-                    <input type="text" required name="lastName" id="lastName" class="form-control" placeholder="Podaj nazwisko"/>
-                </div>
-                <button class="btn btn-primary" type="submit">Zaktulizuj</button>
-                <button class="btn btn-secondary" type="reset">Usuń użytkownika</button>
-                <sec:csrfInput/>
-            </form>
-        </div>
-        <div class="col-5"></div>
+        <div class="col-3 text-left h4">Nazwa użytkownika</div>
+        <div class="col-1"></div>
+        <div class="col-3 text-left h3"> ${userDAO.username}</div>
     </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-3 text-left h4">Imię</div>
+        <div class="col-1"></div>
+        <div class="col-3 text-left h3"> ${userDAO.firstName}</div>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-3 text-left h4">Nazwisko</div>
+        <div class="col-1"></div>
+        <div class="col-3 text-left h3"> ${userDAO.lastName}</div>
+    </div>
+
+</div>
+<div class="col-5"></div>
+</div>
 </div>
 </body>
 </html>
