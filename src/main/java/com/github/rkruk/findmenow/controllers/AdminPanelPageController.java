@@ -60,4 +60,16 @@ public class AdminPanelPageController {
         storageService.storeFile(name, file, description);
         return "redirect:/admin-panel";
     }
+
+    @GetMapping("/activate-scheme")
+    public String activateScheme(Long id) {
+        schemeService.activateScheme(id);
+        return "redirect:/admin-panel";
+    }
+
+    @GetMapping("/deactivate-scheme")
+    public String deactivateScheme(Long id) {
+        schemeService.deactivateScheme(id);
+        return "redirect:/admin-panel";
+    }
 }
