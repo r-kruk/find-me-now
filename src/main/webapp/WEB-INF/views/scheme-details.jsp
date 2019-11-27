@@ -17,6 +17,27 @@
     </div>
     <br>
     <div class="row">
+        <div class="col-12 text-center h5">${schemeDAO.description}</div>
+    </div>
+    <br>
+    <div class="row">
+        <c:if test="${schemeDAO.active == true}">
+            <div class="col-12 text-center h5">
+                <span>Aktywny i widoczny</span>
+                <br>
+                <a href="/admin-panel/deactivate-scheme?id=${schemeDAO.id}" class="btn btn-primary btn-sm">Ukryj</a>
+            </div>
+        </c:if>
+        <c:if test="${schemeDAO.active == false}">
+            <div class="col-12 text-center h5">
+                <span>Nieaktywny i niewidoczny</span>
+                <br>
+                <a href="/admin-panel/activate-scheme?id=${schemeDAO.id}" class="btn btn-primary btn-sm">Udostępnij</a>
+            </div>
+        </c:if>
+    </div>
+    <br>
+    <div class="row">
         <div class="col-12 text-center">
             <img src="/scheme?id=${schemeDAO.id}" class="img-fluid" alt="Scheme">
         </div>
