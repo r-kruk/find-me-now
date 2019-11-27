@@ -43,4 +43,16 @@ public class SchemeService {
         }
         return allActiveSchemesDAO;
     }
+
+    public void activateScheme(Long id) {
+        Scheme scheme = schemeRepository.getOne(id);
+        scheme.setActive(true);
+        schemeRepository.save(scheme);
+    }
+
+    public void deactivateScheme(Long id) {
+        Scheme scheme = schemeRepository.getOne(id);
+        scheme.setActive(false);
+        schemeRepository.save(scheme);
+    }
 }
