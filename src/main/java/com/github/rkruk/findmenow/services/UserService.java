@@ -25,6 +25,10 @@ public class UserService {
         UserDAO userDAO = new UserDAO(user.getId(), user.getUsername(), user.getFirstName(), user.getLastName(), null);
         return userDAO;
     }
-//  user.getPlace().getId()
+
+    public Long getIdOfLoggedUser(String username) {
+        User user = userRepository.findByUsernameEquals(username);
+        return user.getId();
+    }
 
 }

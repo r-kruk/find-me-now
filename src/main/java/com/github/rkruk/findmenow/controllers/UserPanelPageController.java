@@ -8,7 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/user-panel")
@@ -20,7 +23,9 @@ public class UserPanelPageController {
     }
 
     @GetMapping
-    public String showUserPanelPage(Model model, Long id) {
+    public String showUserPanelPage(Model model, Principal principal) {
+        String username = principal.getName();
+        Long id = userService.getIdOfLoggedUser(username);
         UserDAO userDAO = userService.getOne(id);
         model.addAttribute("userDAO", userDAO);
         return "/WEB-INF/views/user-panel.jsp";
