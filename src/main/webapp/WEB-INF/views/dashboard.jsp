@@ -23,7 +23,10 @@
         </div>
         <div class="col-1"></div>
         <div class="col-10 h1 text-center">
-            <c:if test="${visibleSchemeId == 0}">
+            <c:if test="${visibleSchemeId == 0 && allActiveSchemeDAOs.size() == 0}">
+                <div class="display-4">Baza danych nie zawiera aktywnych schematów!</div>
+            </c:if>
+            <c:if test="${visibleSchemeId == 0 && allActiveSchemeDAOs.size() > 0}">
                 <img src="/scheme?id=${allActiveSchemeDAOs.get(0).id}" class="img-fluid" alt="Scheme">
             </c:if>
             <c:if test="${visibleSchemeId != 0}">
