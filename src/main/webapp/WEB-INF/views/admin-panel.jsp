@@ -13,13 +13,17 @@
 <jsp:include page="fragments/menu.jsp"/>
 <div class="container">
     <div class="row">
-        <div class="col-12 text-center">
-            <a href="/admin-panel/add-scheme" class="btn btn-primary">Dodaj schemat</a>
+        <div class="col-1">
+            <a href="/admin-panel?tab=0" class="btn btn-primary float-right">Schematy</a>
+            <br>
+            <br>
+            <a href="/admin-panel?tab=1" class="btn btn-primary float-right">Użytkownicy</a>
         </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-12">
+        <div class="col-1"></div>
+        <div class="col-10 text-center">
+            <a href="/admin-panel/add-scheme" class="btn btn-primary">Dodaj schemat</a>
+            <br>
+            <br>
             <table class="table table-hover table-bordered text-center">
                 <thead>
                     <tr class="thead-dark">
