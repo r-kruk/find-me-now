@@ -28,15 +28,13 @@ public class UserService {
 
     public UserDAO getOne(Long id) {
         User user = userRepository.getOne(id);
-        UserDAO userDAO = new UserDAO(user.getId(), user.getUsername(), user.getFirstName(), user.getLastName(), null);
-        return userDAO;
+        return modelMapper.convert(user);
     }
 
     public Long getIdOfLoggedUser(String username) {
         User user = userRepository.findByUsernameEquals(username);
         return user.getId();
     }
-
 
     public List<UserDAO> getAllUserDAOs() {
         List<User> allUsers = userRepository.findAll();
