@@ -6,6 +6,7 @@ import com.github.rkruk.findmenow.models.User;
 import com.github.rkruk.findmenow.repositories.UserRepository;
 import com.github.rkruk.findmenow.utils.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,15 +17,18 @@ public class UserService {
 
     private UserRepository userRepository;
     private ModelMapper modelMapper;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository, ModelMapper modelMapper) {
+    public UserService(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public void registerUser(String username, String password, String firstName, String lastName, boolean active, String role, Place place) {
-        userRepository.save(new User(username, "{noop}"+password, firstName, lastName, true, role, null));
+        userRepository.save(new User(username, passwordEncoder.encode(password), firstName, lastName, true, role, null));
+
     }
 
     public UserDAO getOne(Long id) {
