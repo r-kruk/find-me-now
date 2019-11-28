@@ -1,6 +1,6 @@
 package com.github.rkruk.findmenow.controllers;
 
-import com.github.rkruk.findmenow.dao.UserDAO;
+import com.github.rkruk.findmenow.daos.UserDAO;
 import com.github.rkruk.findmenow.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

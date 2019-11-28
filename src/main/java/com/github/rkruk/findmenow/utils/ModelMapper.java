@@ -1,9 +1,9 @@
 package com.github.rkruk.findmenow.utils;
 
 
-import com.github.rkruk.findmenow.dao.PlaceDAO;
-import com.github.rkruk.findmenow.dao.SchemeDAO;
-import com.github.rkruk.findmenow.dao.UserDAO;
+import com.github.rkruk.findmenow.daos.PlaceDAO;
+import com.github.rkruk.findmenow.daos.SchemeDAO;
+import com.github.rkruk.findmenow.daos.UserDAO;
 import com.github.rkruk.findmenow.models.Place;
 import com.github.rkruk.findmenow.models.Scheme;
 import com.github.rkruk.findmenow.models.User;

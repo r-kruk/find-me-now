@@ -69,12 +69,12 @@
                     <c:forEach items="${allUserDAOs}" var="user" varStatus="userStatus">
                         <tr>
                             <td class="align-middle">${userStatus.count}</td>
-<%--                            <c:if test="${user.active == true}">--%>
+                            <c:if test="${user.active == true}">
                                 <td>TAK</td>
-<%--                            </c:if>--%>
-<%--                            <c:if test="${user.active != true}">--%>
-<%--                                <td>NIE</td>--%>
-<%--                            </c:if>--%>
+                            </c:if>
+                            <c:if test="${user.active != true}">
+                                <td>NIE</td>
+                            </c:if>
                             <td class="align-middle">${user.username}</td>
                             <td class="align-middle">${user.role}</td>
                             <td><a href="/user-details?id=${user.id}" class="btn btn-primary btn-sm">Zobacz</a></td>

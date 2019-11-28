@@ -30,12 +30,12 @@
                     <br>
                     <c:if test="${userDAO.active == true}">
                         <p class="h5">
-                            <span>Konto aktywne: tak <a href="/admin-panel/deactivate-user?id=${userDAO.id}" class="btn btn-primary btn-sm">Wyłącz</a></span>
+                            <span>Konto aktywne: TAK <a href="/admin-panel/deactivate-user?id=${userDAO.id}" class="btn btn-primary btn-sm">Wyłącz</a></span>
                         </p>
                     </c:if>
                     <c:if test="${userDAO.active == false}">
                         <p class="h5">
-                            <span>Konto aktywne: nie <a href="/admin-panel/activate-user?id=${userDAO.id}" class="btn btn-primary btn-sm">Włącz</a></span>
+                            <span>Konto aktywne: NIE <a href="/admin-panel/activate-user?id=${userDAO.id}" class="btn btn-primary btn-sm">Włącz</a></span>
                         </p>
                     </c:if>
             </c:if>
