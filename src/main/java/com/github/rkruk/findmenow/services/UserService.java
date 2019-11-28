@@ -28,6 +28,7 @@ public class UserService {
 
     public void registerUser(String username, String password, String firstName, String lastName, boolean active, String role, Place place) {
         userRepository.save(new User(username, passwordEncoder.encode(password), firstName, lastName, true, role, null));
+
     }
 
     public UserDAO getOne(Long id) {
