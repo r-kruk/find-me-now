@@ -1,7 +1,9 @@
 package com.github.rkruk.findmenow.utils;
 
+import com.github.rkruk.findmenow.DAOs.PlaceDAO;
 import com.github.rkruk.findmenow.DAOs.SchemeDAO;
 import com.github.rkruk.findmenow.DAOs.UserDAO;
+import com.github.rkruk.findmenow.models.Place;
 import com.github.rkruk.findmenow.models.Scheme;
 import com.github.rkruk.findmenow.models.User;
 import org.springframework.stereotype.Component;
@@ -29,5 +31,19 @@ public class ModelMapper {
                 user.getFirstName(),
                 user.getLastName(),
                 placeId);
+    }
+
+    public PlaceDAO convert(Place place) {
+        Long schemeId = null;
+        if (place.getScheme() != null) {
+            schemeId = place.getScheme().getId();
+        }
+        return new PlaceDAO(
+                place.getId(),
+                place.getName(),
+                place.getDescription(),
+                place.getCoordinateX(),
+                place.getCoordinateY(),
+                schemeId);
     }
 }
