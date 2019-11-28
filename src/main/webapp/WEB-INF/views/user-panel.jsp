@@ -38,6 +38,12 @@
         <div class="col-1"></div>
         <div class="col-3 text-left h3"> ${userDAO.lastName}</div>
     </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-3 text-left h4">Uprawnienia</div>
+        <div class="col-1"></div>
+        <div class="col-3 text-left h3"> ${userDAO.role}</div>
+    </div>
 
 </div>
 <div class="col-5"></div>

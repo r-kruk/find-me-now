@@ -1,6 +1,7 @@
 package com.github.rkruk.findmenow.services;
 
 import com.github.rkruk.findmenow.DAOs.UserDAO;
+import com.github.rkruk.findmenow.models.Place;
 import com.github.rkruk.findmenow.models.User;
 import com.github.rkruk.findmenow.repositories.UserRepository;
 import com.github.rkruk.findmenow.utils.ModelMapper;
@@ -22,8 +23,8 @@ public class UserService {
         this.modelMapper = modelMapper;
     }
 
-    public void registerUser(String username, String password, String firstName, String lastName) {
-        userRepository.save(new User(username, "{noop}"+password, firstName, lastName, null));
+    public void registerUser(String username, String password, String firstName, String lastName, boolean active, String role, Place place) {
+        userRepository.save(new User(username, "{noop}"+password, firstName, lastName, true, role, null));
     }
 
     public UserDAO getOne(Long id) {

@@ -54,12 +54,14 @@
             <c:if test="${tabNumber == 1}">
                 <br>
                 <br>
+                <br>
                 <table class="table table-hover table-bordered text-center">
                     <thead>
                     <tr class="thead-dark">
                         <th>Lp.</th>
                         <th>Aktywny</th>
                         <th>Login</th>
+                        <th>Uprawnienia</th>
                         <th>Szczegóły</th>
                     </tr>
                     </thead>
@@ -74,6 +76,7 @@
 <%--                                <td>NIE</td>--%>
 <%--                            </c:if>--%>
                             <td class="align-middle">${user.username}</td>
+                            <td class="align-middle">${user.role}</td>
                             <td><a href="/user-details?id=${user.id}" class="btn btn-primary btn-sm">Zobacz</a></td>
                         </tr>
                     </c:forEach>

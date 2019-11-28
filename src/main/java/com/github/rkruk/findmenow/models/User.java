@@ -19,6 +19,8 @@ public class User extends BaseEntity {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
+    private Boolean active;
+    private String role;
     @OneToOne
     private Place place;
 }
