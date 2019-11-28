@@ -26,12 +26,14 @@
             <div class="col-12 text-center h5">
                 <span>Aktywny i widoczny</span>
                 <br>
+                <br>
                 <a href="/admin-panel/deactivate-scheme?id=${schemeDAO.id}" class="btn btn-primary btn-sm">Ukryj</a>
             </div>
         </c:if>
         <c:if test="${schemeDAO.active == false}">
             <div class="col-12 text-center h5">
                 <span>Nieaktywny i niewidoczny</span>
+                <br>
                 <br>
                 <a href="/admin-panel/activate-scheme?id=${schemeDAO.id}" class="btn btn-primary btn-sm">Udostępnij</a>
             </div>
