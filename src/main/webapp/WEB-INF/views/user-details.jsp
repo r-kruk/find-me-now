@@ -12,35 +12,47 @@
 <jsp:include page="fragments/header.jsp"/>
 <jsp:include page="fragments/menu.jsp"/>
 <div class="container">
-    <br>
     <div class="row">
-        <div class="col-12 text-center h3">${userDAO.username}</div>
+        <div class="col-1">
+            <a href="/user-details?id=${userDAO.id}&tab=0" class="btn btn-primary float-right">Informacje</a>
+            <br>
+            <br>
+            <a href="/user-details?id=${userDAO.id}&tab=1" class="btn btn-primary float-right">Rezerwacje</a>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-10 text-left">
+            <c:if test="${activeTab == 0}">
+                    <br>
+                    <p class="h3">Nazwa uzytkownika: ${userDAO.username}</p>
+                    <br>
+                    <p class="h5">Imię: ${userDAO.firstName}</p>
+                    <p class="h5">Nazwisko: ${userDAO.lastName}</p>
+                    <br>
+                <%--        <c:if test="${userDAO.active == true}">--%>
+                <%--            <div class="col-12 text-center h5">--%>
+                <%--                <span>Konto aktywne: TAK</span>--%>
+                <%--                <br>--%>
+                <%--                <a href="/admin-panel/deactivate-user?id=${userDAO.id}" class="btn btn-primary btn-sm">Wyłącz</a>--%>
+                <%--            </div>--%>
+                <%--        </c:if>--%>
+                <%--        <c:if test="${userDAO.active == false}">--%>
+                <%--            <div class="col-12 text-center h5">--%>
+                <%--                <span>Konto aktywne: NIE</span>--%>
+                <%--                <br>--%>
+                <%--                <a href="/admin-panel/activate-user?id=${userDAO.id}" class="btn btn-primary btn-sm">Włącz</a>--%>
+                <%--            </div>--%>
+                <%--        </c:if>--%>
+            </c:if>
+            <c:if test="${activeTab == 1}">
+                <div class="h1 text-center">
+                    Tu kiedyś będą rezerwacje użytkownika.
+                    <br>
+                    <br>
+                    Jak zrobimy oczywiście. ;)
+                </div>
+            </c:if>
+        </div>
     </div>
-    <br>
-    <div class="row">
-        <div class="col-12 text-center h5">${userDAO.firstName}</div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-12 text-center h5">${userDAO.lastName}</div>
-    </div>
-    <br>
-<%--    <div class="row">--%>
-<%--        <c:if test="${userDAO.active == true}">--%>
-<%--            <div class="col-12 text-center h5">--%>
-<%--                <span>Aktywny i widoczny</span>--%>
-<%--                <br>--%>
-<%--                <a href="/admin-panel/deactivate-user?id=${userDAO.id}" class="btn btn-primary btn-sm">Wyłącz</a>--%>
-<%--            </div>--%>
-<%--        </c:if>--%>
-<%--        <c:if test="${userDAO.active == false}">--%>
-<%--            <div class="col-12 text-center h5">--%>
-<%--                <span>Nieaktywny i niewidoczny</span>--%>
-<%--                <br>--%>
-<%--                <a href="/admin-panel/activate-user?id=${userDAO.id}" class="btn btn-primary btn-sm">Włącz</a>--%>
-<%--            </div>--%>
-<%--        </c:if>--%>
-<%--    </div>--%>
 </div>
 </body>
 </html>
