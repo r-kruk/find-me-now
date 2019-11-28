@@ -1,4 +1,4 @@
-package com.github.rkruk.findmenow.dao;
+package com.github.rkruk.findmenow.daos;
 
 import lombok.*;
 

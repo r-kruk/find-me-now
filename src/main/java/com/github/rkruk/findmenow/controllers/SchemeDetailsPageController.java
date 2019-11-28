@@ -1,6 +1,6 @@
 package com.github.rkruk.findmenow.controllers;
 
-import com.github.rkruk.findmenow.dao.SchemeDAO;
+import com.github.rkruk.findmenow.daos.SchemeDAO;
 import com.github.rkruk.findmenow.services.SchemeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

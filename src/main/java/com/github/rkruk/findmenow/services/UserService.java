@@ -1,6 +1,6 @@
 package com.github.rkruk.findmenow.services;
 
-import com.github.rkruk.findmenow.dao.UserDAO;
+import com.github.rkruk.findmenow.daos.UserDAO;
 import com.github.rkruk.findmenow.models.Place;
 import com.github.rkruk.findmenow.models.User;
 import com.github.rkruk.findmenow.repositories.UserRepository;
@@ -50,4 +50,15 @@ public class UserService {
         return allUserDAOs;
     }
 
+    public void activateUser(Long id) {
+        User user = userRepository.getOne(id);
+        user.setActive(true);
+        userRepository.save(user);
+    }
+
+    public void deactivateUser(Long id) {
+        User user = userRepository.getOne(id);
+        user.setActive(false);
+        userRepository.save(user);
+    }
 }

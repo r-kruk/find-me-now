@@ -1,7 +1,7 @@
 package com.github.rkruk.findmenow.controllers;
 
-import com.github.rkruk.findmenow.dao.SchemeDAO;
-import com.github.rkruk.findmenow.dao.UserDAO;
+import com.github.rkruk.findmenow.daos.SchemeDAO;
+import com.github.rkruk.findmenow.daos.UserDAO;
 import com.github.rkruk.findmenow.services.SchemeService;
 import com.github.rkruk.findmenow.services.StorageService;
 import com.github.rkruk.findmenow.services.UserService;
@@ -70,6 +70,18 @@ public class AdminPanelPageController {
     @GetMapping("/deactivate-scheme")
     public String deactivateScheme(Long id) {
         schemeService.deactivateScheme(id);
+        return "redirect:/admin-panel";
+    }
+
+    @GetMapping("/activate-user")
+    public String activateUser(Long id) {
+        userService.activateUser(id);
+        return "redirect:/admin-panel";
+    }
+
+    @GetMapping("/deactivate-user")
+    public String deactivateUser(Long id) {
+        userService.deactivateUser(id);
         return "redirect:/admin-panel";
     }
 }
