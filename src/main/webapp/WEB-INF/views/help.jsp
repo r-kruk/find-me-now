@@ -13,7 +13,14 @@
 <jsp:include page="fragments/menu.jsp"/>
 <div class="container">
     <div class="row">
-        <div class="col-12 h1 text-center">
+        <div class="col-1">
+            <a href="/help?tab=0" class="btn btn-primary float-right">O programie</a>
+            <br>
+            <br>
+            <a href="/help?tab=1" class="btn btn-primary float-right">O autorach</a>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-10 text-center h1">
             Tu kiedyś będzie bardzo dokładna i wyczerpująca temat pomoc. :P
         </div>
     </div>
