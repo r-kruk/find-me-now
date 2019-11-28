@@ -1,11 +1,13 @@
 package com.github.rkruk.findmenow.controllers;
 
 import com.github.rkruk.findmenow.daos.SchemeDAO;
+import com.github.rkruk.findmenow.models.User;
 import com.github.rkruk.findmenow.services.SchemeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -30,4 +32,10 @@ public class DashboardPageController {
         model.addAttribute("visibleSchemeId", visibleSchemeId);
         return "/WEB-INF/views/dashboard.jsp";
     }
+
+    @PostMapping
+    public String userToBeFound(String search) {
+        return "redirect:/";
+    }
+
 }

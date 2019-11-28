@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>Find me now!</title>
@@ -27,6 +28,18 @@
             </div>
             <div class="col-1"></div>
             <div class="col-10 h1 text-center">
+                <form method="post" action="/">
+                    <div class="form-row">
+                        <div class="col-11 form-group">
+                            <input type="text" required name="search" id="search" class="form-control"
+                                   placeholder="Podaj nazwisko"/>
+                        </div>
+                        <div class="col-1 form-group">
+                            <button class="btn btn-primary" type="submit">Szukaj</button>
+                        </div>
+                    </div>
+                    <sec:csrfInput/>
+                </form>
                 <c:if test="${visibleSchemeId == 0}">
                     <img src="/scheme?id=${allActiveSchemeDAOs.get(0).id}" class="img-fluid" alt="Scheme">
                 </c:if>
