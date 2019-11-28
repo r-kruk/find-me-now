@@ -64,24 +64,24 @@ public class AdminPanelPageController {
     @GetMapping("/activate-scheme")
     public String activateScheme(Long id) {
         schemeService.activateScheme(id);
-        return "redirect:/admin-panel";
+        return "redirect:/scheme-details?id="+id;
     }
 
     @GetMapping("/deactivate-scheme")
     public String deactivateScheme(Long id) {
         schemeService.deactivateScheme(id);
-        return "redirect:/admin-panel";
+        return "redirect:/scheme-details?id="+id;
     }
 
     @GetMapping("/activate-user")
     public String activateUser(Long id) {
         userService.activateUser(id);
-        return "redirect:/admin-panel";
+        return "redirect:/user-details?id="+id;
     }
 
     @GetMapping("/deactivate-user")
     public String deactivateUser(Long id) {
         userService.deactivateUser(id);
-        return "redirect:/admin-panel";
+        return "redirect:/user-details?id="+id;
     }
 }
