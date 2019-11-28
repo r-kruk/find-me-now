@@ -1,6 +1,6 @@
 package com.github.rkruk.findmenow.services;
 
-import com.github.rkruk.findmenow.DAOs.UserDAO;
+import com.github.rkruk.findmenow.dao.UserDAO;
 import com.github.rkruk.findmenow.models.Place;
 import com.github.rkruk.findmenow.models.User;
 import com.github.rkruk.findmenow.repositories.UserRepository;

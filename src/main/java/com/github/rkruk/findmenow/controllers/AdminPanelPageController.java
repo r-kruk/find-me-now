@@ -1,7 +1,7 @@
 package com.github.rkruk.findmenow.controllers;
 
-import com.github.rkruk.findmenow.DAOs.SchemeDAO;
-import com.github.rkruk.findmenow.DAOs.UserDAO;
+import com.github.rkruk.findmenow.dao.SchemeDAO;
+import com.github.rkruk.findmenow.dao.UserDAO;
 import com.github.rkruk.findmenow.services.SchemeService;
 import com.github.rkruk.findmenow.services.StorageService;
 import com.github.rkruk.findmenow.services.UserService;
