@@ -52,6 +52,8 @@
                 </table>
             </c:if>
             <c:if test="${tabNumber == 1}">
+                <br>
+                <br>
                 <table class="table table-hover table-bordered text-center">
                     <thead>
                     <tr class="thead-dark">
