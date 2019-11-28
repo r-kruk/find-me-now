@@ -28,7 +28,7 @@
             </div>
             <div class="col-1"></div>
             <div class="col-10 h1 text-center">
-                <form method="post" action="/">
+                <form method="post" action="/?id=${visibleSchemeId}">
                     <div class="form-row">
                         <div class="col-11 form-group">
                             <input type="text" required name="search" id="search" class="form-control"

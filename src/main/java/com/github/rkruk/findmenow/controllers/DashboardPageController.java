@@ -34,8 +34,8 @@ public class DashboardPageController {
     }
 
     @PostMapping
-    public String userToBeFound(String search) {
-        return "redirect:/";
+    public String userToBeFound(String search, Long id) {
+        return "redirect:/?id=" + id;
     }
 
 }
