@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Pomoc</title>
@@ -13,8 +14,35 @@
 <jsp:include page="fragments/menu.jsp"/>
 <div class="container">
     <div class="row">
-        <div class="col-12 h1 text-center">
-            Tu kiedyś będzie bardzo dokładna i wyczerpująca temat pomoc. :P
+        <div class="col-1">
+            <a href="/help?tab=0" class="btn btn-primary float-right">O programie</a>
+            <br>
+            <br>
+            <a href="/help?tab=1" class="btn btn-primary float-right">Jak używać?</a>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-10 text-left">
+            <c:if test="${tabNumber == 0}">
+                <div class="h1">
+                    <i class="fa fa-users"></i>Find me now!
+                </div>
+                <br>
+                <br>
+                <div class="h3">
+                    Aplikacja służy do zarządzania miejscami w organizacji. Umożliwia również odnalezienie pracownika,
+                    jeżeli ten wykorzystuje któreś z zarządzanych w aplikacji miejsc.
+                </div>
+            </c:if>
+            <c:if test="${tabNumber == 1}">
+                <div class="h1">
+                    <i class="fa fa-users"></i>Find me now!
+                </div>
+                <br>
+                <br>
+                <div class="h3">
+                    Jak najdłużej. ;)
+                </div>
+            </c:if>
         </div>
     </div>
 </div>

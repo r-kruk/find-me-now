@@ -39,10 +39,10 @@
                         <tr>
                             <td class="align-middle">${schemeStatus.count}</td>
                             <c:if test="${scheme.active == true}">
-                                <td>TAK</td>
+                                <td class="align-middle">TAK</td>
                             </c:if>
                             <c:if test="${scheme.active != true}">
-                                <td>NIE</td>
+                                <td class="align-middle">NIE</td>
                             </c:if>
                             <td class="align-middle">${scheme.name}</td>
                             <td><a href="/scheme-details?id=${scheme.id}" class="btn btn-primary btn-sm">Zobacz</a></td>
@@ -70,10 +70,10 @@
                         <tr>
                             <td class="align-middle">${userStatus.count}</td>
                             <c:if test="${user.active == true}">
-                                <td>TAK</td>
+                                <td class="align-middle">TAK</td>
                             </c:if>
                             <c:if test="${user.active != true}">
-                                <td>NIE</td>
+                                <td class="align-middle">NIE</td>
                             </c:if>
                             <td class="align-middle">${user.username}</td>
                             <td class="align-middle">${user.role}</td>
