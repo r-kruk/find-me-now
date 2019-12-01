@@ -25,7 +25,7 @@
                     <input type="file" required name="file" id="file" class="form-control"/>
                 </div>
                 <div class="form-group">
-                    <label for="description">Nazwa schematu</label>
+                    <label for="description">Opis schematu</label>
                     <input type="text" name="description" id="description" class="form-control" placeholder="Podaj opis schematu (opcjonalne)"/>
                 </div>
                 <button class="btn btn-primary" type="submit">Wyślij</button>

@@ -51,14 +51,30 @@ public class AdminPanelPageController {
     }
 
     @GetMapping("/add-scheme")
-    public String showPlansManagementPage() {
+    public String showSchemesAddingPage() {
         return "/WEB-INF/views/add-scheme.jsp";
     }
 
     @PostMapping("/add-scheme")
-    public String storeFileWithPlan(String name, MultipartFile file, String description) {
-        storageService.storeFile(name, file, description);
-        return "redirect:/admin-panel";
+    public String storeFileWithScheme(String name, MultipartFile file, String description) {
+        Long schemeId = storageService.storeFile(name, file, description).getId();
+        return "redirect:/admin-panel/add-places?scheme=" + schemeId;
+    }
+
+    @GetMapping("/add-places")
+    public String showPlacesAddingPage(Model model,
+                                       @RequestParam(name = "scheme") Long schemeId) {
+        model.addAttribute("schemeId", schemeId);
+        return "/WEB-INF/views/add-places.jsp";
+    }
+
+    @PostMapping("/add-places")
+    public String addNewPlaceOnScheme(@RequestParam(name = "id") Long schemeId,
+                                      String name,
+                                      Long positionX,
+                                      Long positionY) {
+        // TODO: 01.12.2019 Creating new object Place's class
+        return "redirect:/admin-panel/add-places?scheme=" + schemeId;
     }
 
     @GetMapping("/activate-scheme")
