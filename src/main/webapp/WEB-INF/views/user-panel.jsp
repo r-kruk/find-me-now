@@ -53,43 +53,5 @@
         </div>
     </div>
 </div>
-<%--<div class="container">--%>
-
-<%--    <div class="row" style="margin-top: 40px">--%>
-<%--        <div class="col-1"></div>--%>
-<%--        <div class="col-10" style="padding-bottom: 20px"><h2>Twoje dane</h2></div>--%>
-<%--        <div class="col-1"></div>--%>
-<%--    </div>--%>
-<%--    <br>--%>
-<%--    <br>--%>
-<%--    <div class="row">--%>
-<%--        <div class="col-1"></div>--%>
-<%--        <div class="col-3 text-left h4">Nazwa użytkownika</div>--%>
-<%--        <div class="col-1"></div>--%>
-<%--        <div class="col-3 text-left h3"> ${userDAO.username}</div>--%>
-<%--    </div>--%>
-<%--    <div class="row">--%>
-<%--        <div class="col-1"></div>--%>
-<%--        <div class="col-3 text-left h4">Imię</div>--%>
-<%--        <div class="col-1"></div>--%>
-<%--        <div class="col-3 text-left h3"> ${userDAO.firstName}</div>--%>
-<%--    </div>--%>
-<%--    <div class="row">--%>
-<%--        <div class="col-1"></div>--%>
-<%--        <div class="col-3 text-left h4">Nazwisko</div>--%>
-<%--        <div class="col-1"></div>--%>
-<%--        <div class="col-3 text-left h3"> ${userDAO.lastName}</div>--%>
-<%--    </div>--%>
-<%--    <div class="row">--%>
-<%--        <div class="col-1"></div>--%>
-<%--        <div class="col-3 text-left h4">Uprawnienia</div>--%>
-<%--        <div class="col-1"></div>--%>
-<%--        <div class="col-3 text-left h3"> ${userDAO.role}</div>--%>
-<%--    </div>--%>
-
-<%--</div>--%>
-<%--<div class="col-5"></div>--%>
-<%--</div>--%>
-<%--</div>--%>
 </body>
 </html>

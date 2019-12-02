@@ -34,7 +34,16 @@ public class UserPanelPageController {
     @GetMapping("/deactivate-user")
     public String deactivateUser(Principal principal,
                                  Long id) {
-        // TODO: 02.12.2019 Add implementation for user deactivate
-        return "";
+        String username = principal.getName();
+        Long loggedUserId = userService.getIdOfLoggedUser(username);
+        if (loggedUserId == id) {
+            userService.deactivateUser(id);
+
+        }
+        else {
+            return "redirect:/";
+        }
+        return "redirect:/logout";
+
     }
 }
