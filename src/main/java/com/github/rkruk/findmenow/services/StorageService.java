@@ -1,7 +1,9 @@
 package com.github.rkruk.findmenow.services;
 
+import com.github.rkruk.findmenow.daos.SchemeDAO;
 import com.github.rkruk.findmenow.models.Scheme;
 import com.github.rkruk.findmenow.repositories.SchemeRepository;
+import com.github.rkruk.findmenow.utils.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -20,27 +22,29 @@ public class StorageService {
 
     private SchemeRepository schemeRepository;
     private ResourceLoader resourceLoader;
+    private ModelMapper modelMapper;
 
     @Autowired
-    public StorageService(SchemeRepository schemeRepository, ResourceLoader resourceLoader) {
+    public StorageService(SchemeRepository schemeRepository, ResourceLoader resourceLoader, ModelMapper modelMapper) {
         this.schemeRepository = schemeRepository;
         this.resourceLoader = resourceLoader;
+        this.modelMapper = modelMapper;
     }
 
     private static String STORAGE_FOLDER = "c:\\temp\\";
 
-    public boolean storeFile(String name,
-                             MultipartFile file,
-                             @RequestParam(required = false, defaultValue = "") String description) {
+    public SchemeDAO storeFile(String name,
+                               MultipartFile file,
+                               @RequestParam(required = false, defaultValue = "") String description) {
         try {
             byte[] bytes = file.getBytes();
             Path path = Paths.get(STORAGE_FOLDER + file.getOriginalFilename());
             Files.write(path, bytes);
-            schemeRepository.save(new Scheme(name, file.getOriginalFilename(), description, false));
+            return modelMapper.convert(
+                    schemeRepository.save(new Scheme(name, file.getOriginalFilename(), description, false)));
         } catch (IOException e) {
-            return false;
+            return null;
         }
-        return true;
     }
 
     public Resource getFile(Long id) {
