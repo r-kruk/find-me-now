@@ -35,7 +35,7 @@
                                    placeholder="Podaj nazwisko"/>
                         </div>
                         <div class="col-1 form-group">
-                            <button class="btn btn-primary" type="submit">Szukaj</button>
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> Szukaj</button>
                         </div>
                     </div>
                     <sec:csrfInput/>
