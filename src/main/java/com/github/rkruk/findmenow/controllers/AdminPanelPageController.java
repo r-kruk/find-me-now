@@ -1,7 +1,9 @@
 package com.github.rkruk.findmenow.controllers;
 
+import com.github.rkruk.findmenow.daos.PlaceDAO;
 import com.github.rkruk.findmenow.daos.SchemeDAO;
 import com.github.rkruk.findmenow.daos.UserDAO;
+import com.github.rkruk.findmenow.services.PlaceService;
 import com.github.rkruk.findmenow.services.SchemeService;
 import com.github.rkruk.findmenow.services.StorageService;
 import com.github.rkruk.findmenow.services.UserService;
@@ -24,14 +26,16 @@ public class AdminPanelPageController {
     private StorageService storageService;
     private SchemeService schemeService;
     private UserService userService;
+    private PlaceService placeService;
 
     @Autowired
     public AdminPanelPageController(StorageService storageService,
                                     SchemeService schemeService,
-                                    UserService userService) {
+                                    UserService userService, PlaceService placeService) {
         this.storageService = storageService;
         this.schemeService = schemeService;
         this.userService = userService;
+        this.placeService = placeService;
     }
 
     @GetMapping
@@ -65,6 +69,10 @@ public class AdminPanelPageController {
     public String showPlacesAddingPage(Model model,
                                        @RequestParam(name = "scheme") Long schemeId) {
         model.addAttribute("schemeId", schemeId);
+        List<PlaceDAO> allPlacesDAOs = new ArrayList<>();
+        allPlacesDAOs = placeService.getAllPlaceDAOs();
+        model.addAttribute("allPlacesDAOs", allPlacesDAOs);
+
         return "/WEB-INF/views/add-places.jsp";
     }
 
@@ -73,7 +81,7 @@ public class AdminPanelPageController {
                                       String name,
                                       Long positionX,
                                       Long positionY) {
-        // TODO: 01.12.2019 Creating new object Place's class
+        placeService.addPlace(schemeId, name, positionX, positionY);
         return "redirect:/admin-panel/add-places?scheme=" + schemeId;
     }
 
