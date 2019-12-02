@@ -22,22 +22,29 @@
         <div class="col-1"></div>
         <div class="col-10 text-left">
             <c:if test="${activeTab == 0}">
-                    <br>
-                    <p class="h3">Nazwa uzytkownika: ${userDAO.username}</p>
-                    <br>
-                    <p class="h5">Imię: ${userDAO.firstName}</p>
-                    <p class="h5">Nazwisko: ${userDAO.lastName}</p>
-                    <br>
-                    <c:if test="${userDAO.active == true}">
-                        <p class="h5">
-                            <span>Konto aktywne: TAK <a href="/admin-panel/deactivate-user?id=${userDAO.id}" class="btn btn-primary btn-sm">Wyłącz</a></span>
-                        </p>
-                    </c:if>
-                    <c:if test="${userDAO.active == false}">
-                        <p class="h5">
-                            <span>Konto aktywne: NIE <a href="/admin-panel/activate-user?id=${userDAO.id}" class="btn btn-primary btn-sm">Włącz</a></span>
-                        </p>
-                    </c:if>
+                <br>
+                <p class="h3">Nazwa uzytkownika: ${userDAO.username}</p>
+                <br>
+                <p class="h5">Imię: ${userDAO.firstName}</p>
+                <p class="h5">Nazwisko: ${userDAO.lastName}</p>
+                <br>
+                <c:if test="${userDAO.role.equals('ROLE_USER')}">
+                    <p class="h5">Uprawnienia: Użytkownik</p>
+                </c:if>
+                <c:if test="${userDAO.role.equals('ROLE_ADMIN')}">
+                    <p class="h5">Uprawnienia: Administrator</p>
+                </c:if>
+                <br>
+                <c:if test="${userDAO.active == true}">
+                    <p class="h5">
+                        <span>Konto aktywne: TAK <a href="/admin-panel/deactivate-user?id=${userDAO.id}" class="btn btn-primary btn-sm">Wyłącz</a></span>
+                    </p>
+                </c:if>
+                <c:if test="${userDAO.active == false}">
+                    <p class="h5">
+                        <span>Konto aktywne: NIE <a href="/admin-panel/activate-user?id=${userDAO.id}" class="btn btn-primary btn-sm">Włącz</a></span>
+                    </p>
+                </c:if>
             </c:if>
             <c:if test="${activeTab == 1}">
                 <div class="h1 text-center">
