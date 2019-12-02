@@ -60,4 +60,13 @@ public class UserService {
         user.setActive(false);
         userRepository.save(user);
     }
+
+    public Long getPlaceIdOfSearchedUser(String lastName) {
+        User user = userRepository.findByLastNameEquals(lastName);
+        if (user.getPlace() == null) {
+            return 0L;
+        }
+        return 1L;
+    }
+
 }
