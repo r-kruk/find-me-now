@@ -9,12 +9,18 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <script>
         function userClicked(event) {
-            var x = event.offsetX;
-            var y = event.offsetY;
+            var schemeX = event.offsetX;
+            var schemeY = event.offsetY;
             var positionX = document.getElementById("positionX");
             var positionY = document.getElementById("positionY");
-            positionX.value = x;
-            positionY.value = y;
+            var pointer = document.getElementById("X");
+            positionX.value = schemeX;
+            positionY.value = schemeY;
+            pointer.style.display = '';
+            pointer.style.color = 'red';
+            pointer.style.position = 'absolute';
+            pointer.style.left = schemeX + 10 + '';
+            pointer.style.top = schemeY - 10 + '';
         }
     </script>
 </head>
@@ -65,7 +71,12 @@
     </div>
     <div class="row">
         <div class="col-12 text-center">
-            <img src="/scheme?id=${schemeId}" class="img-fluid" alt="Scheme" onclick="userClicked(event)">
+            <div>
+                <img src="/scheme?id=${schemeId}" class="img-fluid border w-100" alt="Scheme" onclick="userClicked(event)">
+                <div>
+                    <i class="fa fa-times" id="X" style="display: none"></i>
+                </div>
+            </div>
         </div>
     </div>
 </div>
