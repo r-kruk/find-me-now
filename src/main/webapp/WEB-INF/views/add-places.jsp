@@ -77,7 +77,7 @@
                 <div>
                     <i class="fa fa-times" id="X" style="display: none"></i>
                     <c:forEach items="${allPlacesDAOs}" var="place" varStatus="placeStatus">
-                        <i class="fa fa-times" id="X"
+                        <i class="fa fa-times"
                            style="color: yellow; position: absolute; left: ${place.coordinateX + 10}; top: ${place.coordinateY - 10}"></i>
                     </c:forEach>
                 </div>

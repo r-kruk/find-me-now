@@ -1,6 +1,8 @@
 package com.github.rkruk.findmenow.controllers;
 
+import com.github.rkruk.findmenow.daos.PlaceDAO;
 import com.github.rkruk.findmenow.daos.SchemeDAO;
+import com.github.rkruk.findmenow.services.PlaceService;
 import com.github.rkruk.findmenow.services.SchemeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,21 +10,27 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/scheme-details")
 public class SchemeDetailsPageController {
 
-    SchemeService schemeService;
+    private SchemeService schemeService;
+    private PlaceService placeService;
 
     @Autowired
-    public SchemeDetailsPageController(SchemeService schemeService) {
+    public SchemeDetailsPageController(SchemeService schemeService, PlaceService placeService) {
         this.schemeService = schemeService;
+        this.placeService = placeService;
     }
 
     @GetMapping
     public String showSchemeDetailsPage(Model model, Long id) {
         SchemeDAO schemeDAO = schemeService.getSchemeDAOById(id);
+        List<PlaceDAO> allPlaceDAOs = placeService.getAllPlaceDAOs();
         model.addAttribute("schemeDAO", schemeDAO);
+        model.addAttribute("allPlaceDAOs", allPlaceDAOs);
         return "/WEB-INF/views/scheme-details.jsp";
     }
 }
