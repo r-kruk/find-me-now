@@ -3,9 +3,12 @@ package com.github.rkruk.findmenow.controllers;
 import com.github.rkruk.findmenow.dtos.PlaceDTO;
 import com.github.rkruk.findmenow.dtos.SchemeDTO;
 import com.github.rkruk.findmenow.dtos.UserDTO;
+import com.github.rkruk.findmenow.models.Place;
+import com.github.rkruk.findmenow.models.User;
 import com.github.rkruk.findmenow.services.PlaceService;
 import com.github.rkruk.findmenow.services.SchemeService;
 import com.github.rkruk.findmenow.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user-panel")
@@ -23,6 +27,8 @@ public class UserPanelPageController {
     private PlaceService placeService;
     private SchemeService schemeService;
 
+
+    @Autowired
     public UserPanelPageController(UserService userService, PlaceService placeService, SchemeService schemeService) {
         this.userService = userService;
         this.placeService = placeService;
@@ -66,13 +72,22 @@ public class UserPanelPageController {
     }
 
     @GetMapping("/take-place")
-    public String showTakePlacePage() {
+    public String showTakePlacePage(Model model,
+                                    @RequestParam(required = false, defaultValue = "0", name = "id") Long visibleSchemeId) {
+        List<SchemeDTO> allActiveSchemeDTOS = schemeService.getAllActiveSchemeDTOs();
+        model.addAttribute("allActiveSchemeDTOS", allActiveSchemeDTOS);
+        model.addAttribute("visibleSchemeId", visibleSchemeId);
         // TODO: 03.12.2019 Create JSP page ("take-place.jsp" will be good)
-        return null;
+        return "/WEB-INF/views/take-place.jsp";
     }
 
     @PostMapping("/take-place")
-    public String takePlace() {
+    public String takePlace(Model model, Long id, User user, Place place) {
+        UserDTO userDTO = userService.getOne(id);
+        PlaceDTO placeDTO = placeService.getPlaceDTOById(id);
+
+
+
         // TODO: 03.12.2019 Make user able to take place
         return null;
     }

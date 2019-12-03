@@ -1,9 +1,17 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: lafar
+  Date: 03.12.2019
+  Time: 19:53
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Find me now!</title>
+    <title>Rezerwacja miejsca</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -13,8 +21,9 @@
 <body>
 <jsp:include page="fragments/header.jsp"/>
 <jsp:include page="fragments/menu.jsp"/>
-<div class="container-fluid">
+<div class="container">
     <div class="row">
+        <div class="col-12 text-center h1">Wybierz miejsce, które chcesz zająć</div>
         <c:if test="${allActiveSchemeDTOS.size() == 0}">
             <div class="col-12 display-4 text-center">Baza danych nie zawiera aktywnych schematów!</div>
         </c:if>
@@ -28,18 +37,7 @@
                 </c:forEach>
             </div>
             <div class="col-8 h1 text-center">
-                <form method="post" action="/?id=${visibleSchemeId}">
-                    <div class="form-row">
-                        <div class="col-11 form-group">
-                            <input type="text" required name="search" id="search" class="form-control"
-                                   placeholder="Podaj nazwisko"/>
-                        </div>
-                        <div class="col-1 form-group">
-                            <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> Szukaj</button>
-                        </div>
-                    </div>
-                    <sec:csrfInput/>
-                </form>
+
                 <c:if test="${visibleSchemeId == 0}">
                     <img src="/scheme?id=${allActiveSchemeDTOS.get(0).id}" class="img-fluid w-100" alt="Scheme">
                 </c:if>
@@ -50,6 +48,7 @@
             <div class="col-1"></div>
         </c:if>
     </div>
+
 </div>
 </body>
 </html>
