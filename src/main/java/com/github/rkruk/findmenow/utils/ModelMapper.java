@@ -1,9 +1,9 @@
 package com.github.rkruk.findmenow.utils;
 
 
-import com.github.rkruk.findmenow.daos.PlaceDAO;
-import com.github.rkruk.findmenow.daos.SchemeDAO;
-import com.github.rkruk.findmenow.daos.UserDAO;
+import com.github.rkruk.findmenow.dtos.PlaceDTO;
+import com.github.rkruk.findmenow.dtos.SchemeDTO;
+import com.github.rkruk.findmenow.dtos.UserDTO;
 import com.github.rkruk.findmenow.models.Place;
 import com.github.rkruk.findmenow.models.Scheme;
 import com.github.rkruk.findmenow.models.User;
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class ModelMapper {
 
-    public SchemeDAO convert(Scheme scheme) {
-        return new SchemeDAO(
+    public SchemeDTO convert(Scheme scheme) {
+        return new SchemeDTO(
                 scheme.getId(),
                 scheme.getName(),
                 scheme.getFileName(),
@@ -21,12 +21,12 @@ public class ModelMapper {
                 scheme.getActive());
     }
 
-    public UserDAO convert(User user) {
+    public UserDTO convert(User user) {
         Long placeId = null;
         if (user.getPlace() != null) {
             placeId = user.getPlace().getId();
         }
-        return new UserDAO(
+        return new UserDTO(
                 user.getId(),
                 user.getUsername(),
                 user.getFirstName(),
@@ -36,12 +36,12 @@ public class ModelMapper {
                 placeId);
     }
 
-    public PlaceDAO convert(Place place) {
+    public PlaceDTO convert(Place place) {
         Long schemeId = null;
         if (place.getScheme() != null) {
             schemeId = place.getScheme().getId();
         }
-        return new PlaceDAO(
+        return new PlaceDTO(
                 place.getId(),
                 place.getName(),
                 place.getDescription(),

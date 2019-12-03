@@ -1,6 +1,6 @@
 package com.github.rkruk.findmenow.services;
 
-import com.github.rkruk.findmenow.daos.UserDAO;
+import com.github.rkruk.findmenow.dtos.UserDTO;
 import com.github.rkruk.findmenow.models.Place;
 import com.github.rkruk.findmenow.models.User;
 import com.github.rkruk.findmenow.repositories.UserRepository;
@@ -30,7 +30,7 @@ public class UserService {
         userRepository.save(new User(username, passwordEncoder.encode(password), firstName, lastName, true, role, null));
     }
 
-    public UserDAO getOne(Long id) {
+    public UserDTO getOne(Long id) {
         User user = userRepository.getOne(id);
         return modelMapper.convert(user);
     }
@@ -40,13 +40,13 @@ public class UserService {
         return user.getId();
     }
 
-    public List<UserDAO> getAllUserDAOs() {
+    public List<UserDTO> getAllUserDTOs() {
         List<User> allUsers = userRepository.findAll();
-        List<UserDAO> allUserDAOs = new ArrayList<>();
+        List<UserDTO> allUserDTOS = new ArrayList<>();
         for (User user : allUsers) {
-            allUserDAOs.add(modelMapper.convert(user));
+            allUserDTOS.add(modelMapper.convert(user));
         }
-        return allUserDAOs;
+        return allUserDTOS;
     }
 
     public void activateUser(Long id) {

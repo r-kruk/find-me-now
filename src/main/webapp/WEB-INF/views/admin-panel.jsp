@@ -35,7 +35,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${allSchemeDAOs}" var="scheme" varStatus="schemeStatus">
+                    <c:forEach items="${allSchemeDTOs}" var="scheme" varStatus="schemeStatus">
                         <tr>
                             <td class="align-middle">${schemeStatus.count}</td>
                             <c:if test="${scheme.active == true}">
@@ -66,7 +66,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${allUserDAOs}" var="user" varStatus="userStatus">
+                    <c:forEach items="${allUserDTOs}" var="user" varStatus="userStatus">
                         <tr>
                             <td class="align-middle">${userStatus.count}</td>
                             <c:if test="${user.active == true}">

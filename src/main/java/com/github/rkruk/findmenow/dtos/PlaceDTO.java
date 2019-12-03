@@ -1,4 +1,4 @@
-package com.github.rkruk.findmenow.daos;
+package com.github.rkruk.findmenow.dtos;
 
 import lombok.*;
 
@@ -7,7 +7,7 @@ import lombok.*;
 @EqualsAndHashCode
 @AllArgsConstructor
 @ToString
-public class PlaceDAO {
+public class PlaceDTO {
 
     private Long id;
     private String name;

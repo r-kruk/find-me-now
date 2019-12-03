@@ -14,37 +14,37 @@
 <div class="container">
     <br>
     <div class="row">
-        <div class="col-12 text-center h3">${schemeDAO.name}</div>
+        <div class="col-12 text-center h3">${schemeDTO.name}</div>
     </div>
     <br>
     <div class="row">
-        <div class="col-12 text-center h5">${schemeDAO.description}</div>
+        <div class="col-12 text-center h5">${schemeDTO.description}</div>
     </div>
     <br>
     <div class="row">
-        <c:if test="${schemeDAO.active == true}">
+        <c:if test="${schemeDTO.active == true}">
             <div class="col-12 text-center h5">
                 <span>Aktywny i widoczny</span>
                 <br>
                 <br>
-                <a href="/admin-panel/deactivate-scheme?id=${schemeDAO.id}" class="btn btn-primary btn-sm">Ukryj</a>
+                <a href="/admin-panel/deactivate-scheme?id=${schemeDTO.id}" class="btn btn-primary btn-sm">Ukryj</a>
             </div>
         </c:if>
-        <c:if test="${schemeDAO.active == false}">
+        <c:if test="${schemeDTO.active == false}">
             <div class="col-12 text-center h5">
                 <span>Nieaktywny i niewidoczny</span>
                 <br>
                 <br>
-                <a href="/admin-panel/activate-scheme?id=${schemeDAO.id}" class="btn btn-primary btn-sm">Udostępnij</a>
+                <a href="/admin-panel/activate-scheme?id=${schemeDTO.id}" class="btn btn-primary btn-sm">Udostępnij</a>
             </div>
         </c:if>
     </div>
     <br>
     <div class="row">
         <div class="col-12 text-center">
-            <img src="/scheme?id=${schemeDAO.id}" class="img-fluid w-100" alt="Scheme">
+            <img src="/scheme?id=${schemeDTO.id}" class="img-fluid w-100" alt="Scheme">
             <div>
-                <c:forEach items="${allPlaceDAOs}" var="place" varStatus="placeStatus">
+                <c:forEach items="${allPlaceDTOs}" var="place" varStatus="placeStatus">
                     <i class="fa fa-times"
                        style="color: yellow; position: absolute; left: ${place.coordinateX + 10}; top: ${place.coordinateY - 10}"></i>
                 </c:forEach>

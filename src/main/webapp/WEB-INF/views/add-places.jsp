@@ -76,7 +76,7 @@
                 <img src="/scheme?id=${schemeId}" class="img-fluid border w-100" alt="Scheme" onclick="userClicked(event)">
                 <div>
                     <i class="fa fa-times" id="X" style="display: none"></i>
-                    <c:forEach items="${allPlacesDAOs}" var="place" varStatus="placeStatus">
+                    <c:forEach items="${allPlacesDTOs}" var="place" varStatus="placeStatus">
                         <i class="fa fa-times"
                            style="color: yellow; position: absolute; left: ${place.coordinateX + 10}; top: ${place.coordinateY - 10}"></i>
                     </c:forEach>

@@ -1,6 +1,6 @@
 package com.github.rkruk.findmenow.services;
 
-import com.github.rkruk.findmenow.daos.SchemeDAO;
+import com.github.rkruk.findmenow.dtos.SchemeDTO;
 import com.github.rkruk.findmenow.models.Scheme;
 import com.github.rkruk.findmenow.repositories.SchemeRepository;
 import com.github.rkruk.findmenow.utils.ModelMapper;
@@ -22,26 +22,26 @@ public class SchemeService {
         this.modelMapper = modelMapper;
     }
 
-    public List<SchemeDAO> getAllSchemeDAOs() {
+    public List<SchemeDTO> getAllSchemeDTOs() {
         List<Scheme> allSchemes = schemeRepository.findAll();
-        List<SchemeDAO> allSchemesDAO = new ArrayList<>();
+        List<SchemeDTO> allSchemesDTO = new ArrayList<>();
         for (Scheme scheme : allSchemes) {
-            allSchemesDAO.add(modelMapper.convert(scheme));
+            allSchemesDTO.add(modelMapper.convert(scheme));
         }
-        return allSchemesDAO;
+        return allSchemesDTO;
     }
 
-    public SchemeDAO getSchemeDAOById(Long id) {
+    public SchemeDTO getSchemeDTOById(Long id) {
         return modelMapper.convert(schemeRepository.getOne(id));
     }
 
-    public List<SchemeDAO> getAllActiveSchemeDAOs() {
+    public List<SchemeDTO> getAllActiveSchemeDTOs() {
         List<Scheme> allActiveSchemes = schemeRepository.findAllByActiveIsTrue();
-        List<SchemeDAO> allActiveSchemesDAO = new ArrayList<>();
+        List<SchemeDTO> allActiveSchemesDTO = new ArrayList<>();
         for (Scheme scheme : allActiveSchemes) {
-            allActiveSchemesDAO.add(modelMapper.convert(scheme));
+            allActiveSchemesDTO.add(modelMapper.convert(scheme));
         }
-        return allActiveSchemesDAO;
+        return allActiveSchemesDTO;
     }
 
     public void activateScheme(Long id) {

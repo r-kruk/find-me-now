@@ -15,14 +15,14 @@
 <jsp:include page="fragments/menu.jsp"/>
 <div class="container-fluid">
     <div class="row">
-        <c:if test="${allActiveSchemeDAOs.size() == 0}">
+        <c:if test="${allActiveSchemeDTOS.size() == 0}">
             <div class="col-12 display-4 text-center">Baza danych nie zawiera aktywnych schematów!</div>
         </c:if>
-        <c:if test="${allActiveSchemeDAOs.size() > 0}">
+        <c:if test="${allActiveSchemeDTOS.size() > 0}">
             <div class="col-1"></div>
             <div class="col-1">
-                <c:forEach items="${allActiveSchemeDAOs}" var="schemeDAO" varStatus="schemeDAOStatus">
-                    <a href="/?id=${schemeDAO.id}" class="btn btn-primary float-right">${schemeDAO.name}</a>
+                <c:forEach items="${allActiveSchemeDTOS}" var="schemeDTO" varStatus="schemeDAOStatus">
+                    <a href="/?id=${schemeDTO.id}" class="btn btn-primary float-right">${schemeDTO.name}</a>
                     <br>
                     <br>
                 </c:forEach>
@@ -41,7 +41,7 @@
                     <sec:csrfInput/>
                 </form>
                 <c:if test="${visibleSchemeId == 0}">
-                    <img src="/scheme?id=${allActiveSchemeDAOs.get(0).id}" class="img-fluid w-100" alt="Scheme">
+                    <img src="/scheme?id=${allActiveSchemeDTOS.get(0).id}" class="img-fluid w-100" alt="Scheme">
                 </c:if>
                 <c:if test="${visibleSchemeId != 0}">
                     <img src="/scheme?id=${visibleSchemeId}" class="img-fluid w-100" alt="Scheme">

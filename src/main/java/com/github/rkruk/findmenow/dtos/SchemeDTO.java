@@ -1,4 +1,4 @@
-package com.github.rkruk.findmenow.daos;
+package com.github.rkruk.findmenow.dtos;
 
 import lombok.*;
 
@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @ToString
-public class SchemeDAO {
+public class SchemeDTO {
 
     private Long id;
     private String name;

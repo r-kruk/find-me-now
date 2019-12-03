@@ -1,6 +1,6 @@
 package com.github.rkruk.findmenow.controllers;
 
-import com.github.rkruk.findmenow.daos.UserDAO;
+import com.github.rkruk.findmenow.dtos.UserDTO;
 import com.github.rkruk.findmenow.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,9 +22,9 @@ public class UserDetailsPageController {
     public String showUserDetailsPage(Model model,
                                       Long id,
                                       @RequestParam(name = "tab", required = false, defaultValue = "0") Long activeTab) {
-        UserDAO userDAO = userService.getOne(id);
+        UserDTO userDTO = userService.getOne(id);
         model.addAttribute("activeTab", activeTab);
-        model.addAttribute("userDAO", userDAO);
+        model.addAttribute("userDTO", userDTO);
         return "/WEB-INF/views/user-details.jsp";
     }
 }
