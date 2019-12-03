@@ -38,4 +38,8 @@ public class PlaceService {
         }
         return allPlacesDTO;
     }
+
+    public PlaceDTO getPlaceDTOById(Long id) {
+        return modelMapper.convert(placeRepository.getOne(id));
+    }
 }

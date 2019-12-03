@@ -44,10 +44,40 @@
             </c:if>
             <c:if test="${activeTab == 1}">
                 <div class="h1 text-center">
-                    Tu kiedyś będą rezerwacje użytkownika.
+                    <a href="/user-panel/take-place" class="btn btn-primary">Zajmij miejsce</a>
                     <br>
                     <br>
-                    Jak zrobimy oczywiście. ;)
+                    <c:if test="${placeDTO == null}">
+                        <div class="h1 text-center">
+                            Tu kiedyś będą rezerwacje użytkownika.
+                            <br>
+                            <br>
+                            Jak coś zarezerwuje oczywiście. ;)
+                        </div>
+                    </c:if>
+                    <c:if test="${placeDTO != null}">
+                        <table class="table table-hover table-bordered text-center">
+                            <thead>
+                            <tr class="thead-dark">
+                                <th>Lp.</th>
+                                <th>Aktywna</th>
+                                <th>Nazwa schematu</th>
+                                <th>Nazwa miejsca</th>
+                                <th>Szczegóły</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="align-middle">1</td>
+                                <td class="align-middle">Not yet</td>
+                                <td class="align-middle">${schemeDTO.name}</td>
+                                <td class="align-middle">${placeDTO.name}</td>
+                                <td class="align-middle">Not yet</td>
+<%--                                <td><a href="/place-details?id=${place.id}" class="btn btn-primary btn-sm">Zobacz</a></td>--%>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </c:if>
                 </div>
             </c:if>
         </div>
