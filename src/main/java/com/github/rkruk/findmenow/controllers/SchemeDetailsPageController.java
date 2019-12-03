@@ -1,7 +1,7 @@
 package com.github.rkruk.findmenow.controllers;
 
-import com.github.rkruk.findmenow.daos.PlaceDAO;
-import com.github.rkruk.findmenow.daos.SchemeDAO;
+import com.github.rkruk.findmenow.dtos.PlaceDTO;
+import com.github.rkruk.findmenow.dtos.SchemeDTO;
 import com.github.rkruk.findmenow.services.PlaceService;
 import com.github.rkruk.findmenow.services.SchemeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +27,10 @@ public class SchemeDetailsPageController {
 
     @GetMapping
     public String showSchemeDetailsPage(Model model, Long id) {
-        SchemeDAO schemeDAO = schemeService.getSchemeDAOById(id);
-        List<PlaceDAO> allPlaceDAOs = placeService.getAllPlaceDAOs();
-        model.addAttribute("schemeDAO", schemeDAO);
-        model.addAttribute("allPlaceDAOs", allPlaceDAOs);
+        SchemeDTO schemeDTO = schemeService.getSchemeDTOById(id);
+        List<PlaceDTO> allPlaceDTOS = placeService.getAllPlaceDTOs();
+        model.addAttribute("schemeDTO", schemeDTO);
+        model.addAttribute("allPlaceDTOs", allPlaceDTOS);
         return "/WEB-INF/views/scheme-details.jsp";
     }
 }

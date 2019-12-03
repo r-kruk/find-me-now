@@ -14,35 +14,35 @@
 <div class="container">
     <div class="row">
         <div class="col-1">
-            <a href="/user-details?id=${userDAO.id}&tab=0" class="btn btn-primary float-right">Informacje</a>
+            <a href="/user-details?id=${userDTO.id}&tab=0" class="btn btn-primary float-right">Informacje</a>
             <br>
             <br>
-            <a href="/user-details?id=${userDAO.id}&tab=1" class="btn btn-primary float-right">Rezerwacje</a>
+            <a href="/user-details?id=${userDTO.id}&tab=1" class="btn btn-primary float-right">Rezerwacje</a>
         </div>
         <div class="col-1"></div>
         <div class="col-10 text-left">
             <c:if test="${activeTab == 0}">
                 <br>
-                <p class="h3">Nazwa uzytkownika: ${userDAO.username}</p>
+                <p class="h3">Nazwa uzytkownika: ${userDTO.username}</p>
                 <br>
-                <p class="h5">Imię: ${userDAO.firstName}</p>
-                <p class="h5">Nazwisko: ${userDAO.lastName}</p>
+                <p class="h5">Imię: ${userDTO.firstName}</p>
+                <p class="h5">Nazwisko: ${userDTO.lastName}</p>
                 <br>
-                <c:if test="${userDAO.role.equals('ROLE_USER')}">
+                <c:if test="${userDTO.role.equals('ROLE_USER')}">
                     <p class="h5">Uprawnienia: Użytkownik</p>
                 </c:if>
-                <c:if test="${userDAO.role.equals('ROLE_ADMIN')}">
+                <c:if test="${userDTO.role.equals('ROLE_ADMIN')}">
                     <p class="h5">Uprawnienia: Administrator</p>
                 </c:if>
                 <br>
-                <c:if test="${userDAO.active == true}">
+                <c:if test="${userDTO.active == true}">
                     <p class="h5">
-                        <span>Konto aktywne: TAK <a href="/admin-panel/deactivate-user?id=${userDAO.id}" class="btn btn-primary btn-sm">Wyłącz</a></span>
+                        <span>Konto aktywne: TAK <a href="/admin-panel/deactivate-user?id=${userDTO.id}" class="btn btn-primary btn-sm">Wyłącz</a></span>
                     </p>
                 </c:if>
-                <c:if test="${userDAO.active == false}">
+                <c:if test="${userDTO.active == false}">
                     <p class="h5">
-                        <span>Konto aktywne: NIE <a href="/admin-panel/activate-user?id=${userDAO.id}" class="btn btn-primary btn-sm">Włącz</a></span>
+                        <span>Konto aktywne: NIE <a href="/admin-panel/activate-user?id=${userDTO.id}" class="btn btn-primary btn-sm">Włącz</a></span>
                     </p>
                 </c:if>
             </c:if>

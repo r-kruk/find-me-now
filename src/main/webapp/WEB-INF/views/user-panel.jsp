@@ -24,20 +24,20 @@
         <div class="col-10 text-left">
             <c:if test="${activeTab == 0}">
                 <br>
-                <p class="h3">Nazwa uzytkownika: ${userDAO.username}</p>
+                <p class="h3">Nazwa uzytkownika: ${userDTO.username}</p>
                 <br>
-                <p class="h5">Imię: ${userDAO.firstName}</p>
-                <p class="h5">Nazwisko: ${userDAO.lastName}</p>
+                <p class="h5">Imię: ${userDTO.firstName}</p>
+                <p class="h5">Nazwisko: ${userDTO.lastName}</p>
                 <br>
-                <c:if test="${userDAO.role.equals('ROLE_USER')}">
+                <c:if test="${userDTO.role.equals('ROLE_USER')}">
                     <p class="h5">Uprawnienia: Użytkownik</p>
                 </c:if>
-                <c:if test="${userDAO.role.equals('ROLE_ADMIN')}">
+                <c:if test="${userDTO.role.equals('ROLE_ADMIN')}">
                     <p class="h5">Uprawnienia: Administrator</p>
                 </c:if>
                 <br>
                 <p class="h5">
-                    <a href="/user-panel/deactivate-user?id=${userDAO.id}" class="btn btn-primary btn-sm">Wyłącz konto</a>
+                    <a href="/user-panel/deactivate-user?id=${userDTO.id}" class="btn btn-primary btn-sm">Wyłącz konto</a>
                     <br>
                     <span class="h6"> Uwaga: konto włączyć ponownie może tylko administrator!</span>
                 </p>

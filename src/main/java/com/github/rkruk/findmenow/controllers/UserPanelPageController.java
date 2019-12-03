@@ -1,6 +1,6 @@
 package com.github.rkruk.findmenow.controllers;
 
-import com.github.rkruk.findmenow.daos.UserDAO;
+import com.github.rkruk.findmenow.dtos.UserDTO;
 import com.github.rkruk.findmenow.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,8 +25,8 @@ public class UserPanelPageController {
                                     @RequestParam(name = "tab", required = false, defaultValue = "0") Long activeTab) {
         String username = principal.getName();
         Long id = userService.getIdOfLoggedUser(username);
-        UserDAO userDAO = userService.getOne(id);
-        model.addAttribute("userDAO", userDAO);
+        UserDTO userDTO = userService.getOne(id);
+        model.addAttribute("userDTO", userDTO);
         model.addAttribute("activeTab", activeTab);
         return "/WEB-INF/views/user-panel.jsp";
     }

@@ -1,6 +1,6 @@
 package com.github.rkruk.findmenow.services;
 
-import com.github.rkruk.findmenow.daos.PlaceDAO;
+import com.github.rkruk.findmenow.dtos.PlaceDTO;
 import com.github.rkruk.findmenow.models.Place;
 import com.github.rkruk.findmenow.repositories.PlaceRepository;
 import com.github.rkruk.findmenow.repositories.SchemeRepository;
@@ -30,12 +30,12 @@ public class PlaceService {
         placeRepository.save(new Place(name, "", schemeRepository.getOne(schemeId), positionX, positionY));
     }
 
-    public List<PlaceDAO> getAllPlaceDAOs() {
+    public List<PlaceDTO> getAllPlaceDTOs() {
         List<Place> allPlaces = placeRepository.findAll();
-        List<PlaceDAO> allPlacesDAO = new ArrayList<>();
+        List<PlaceDTO> allPlacesDTO = new ArrayList<>();
         for (Place place : allPlaces) {
-            allPlacesDAO.add(modelMapper.convert(place));
+            allPlacesDTO.add(modelMapper.convert(place));
         }
-        return allPlacesDAO;
+        return allPlacesDTO;
     }
 }

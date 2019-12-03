@@ -1,9 +1,6 @@
 package com.github.rkruk.findmenow.controllers;
 
-import com.github.rkruk.findmenow.daos.SchemeDAO;
-import com.github.rkruk.findmenow.daos.UserDAO;
-import com.github.rkruk.findmenow.models.User;
-import com.github.rkruk.findmenow.repositories.UserRepository;
+import com.github.rkruk.findmenow.dtos.SchemeDTO;
 import com.github.rkruk.findmenow.services.SchemeService;
 import com.github.rkruk.findmenow.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +29,8 @@ public class DashboardPageController {
     @GetMapping
     public String showDashboardPage (Model model,
                                      @RequestParam(required = false, defaultValue = "0", name = "id") Long visibleSchemeId) {
-        List<SchemeDAO> allActiveSchemeDAOs = schemeService.getAllActiveSchemeDAOs();
-        model.addAttribute("allActiveSchemeDAOs", allActiveSchemeDAOs);
+        List<SchemeDTO> allActiveSchemeDTOS = schemeService.getAllActiveSchemeDTOs();
+        model.addAttribute("allActiveSchemeDTOS", allActiveSchemeDTOS);
         model.addAttribute("visibleSchemeId", visibleSchemeId);
         return "/WEB-INF/views/dashboard.jsp";
     }

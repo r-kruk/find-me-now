@@ -1,6 +1,6 @@
 package com.github.rkruk.findmenow.services;
 
-import com.github.rkruk.findmenow.daos.SchemeDAO;
+import com.github.rkruk.findmenow.dtos.SchemeDTO;
 import com.github.rkruk.findmenow.models.Scheme;
 import com.github.rkruk.findmenow.repositories.SchemeRepository;
 import com.github.rkruk.findmenow.utils.ModelMapper;
@@ -33,7 +33,7 @@ public class StorageService {
 
     private static String STORAGE_FOLDER = "c:\\temp\\";
 
-    public SchemeDAO storeFile(String name,
+    public SchemeDTO storeFile(String name,
                                MultipartFile file,
                                @RequestParam(required = false, defaultValue = "") String description) {
         try {

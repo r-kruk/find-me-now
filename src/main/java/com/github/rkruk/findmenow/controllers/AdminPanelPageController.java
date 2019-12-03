@@ -1,8 +1,8 @@
 package com.github.rkruk.findmenow.controllers;
 
-import com.github.rkruk.findmenow.daos.PlaceDAO;
-import com.github.rkruk.findmenow.daos.SchemeDAO;
-import com.github.rkruk.findmenow.daos.UserDAO;
+import com.github.rkruk.findmenow.dtos.PlaceDTO;
+import com.github.rkruk.findmenow.dtos.SchemeDTO;
+import com.github.rkruk.findmenow.dtos.UserDTO;
 import com.github.rkruk.findmenow.services.PlaceService;
 import com.github.rkruk.findmenow.services.SchemeService;
 import com.github.rkruk.findmenow.services.StorageService;
@@ -42,15 +42,15 @@ public class AdminPanelPageController {
     public String showAdminPanelPage(Model model,
                                      @RequestParam(name = "tab", required = false, defaultValue = "0") Long tabNumber) {
         model.addAttribute("tabNumber", tabNumber);
-        List<SchemeDAO> allSchemeDAOs = new ArrayList<>();
-        List<UserDAO> allUserDAOs = new ArrayList<>();
+        List<SchemeDTO> allSchemeDTOs = new ArrayList<>();
+        List<UserDTO> allUserDTOs = new ArrayList<>();
         if (tabNumber == 0) {
-            allSchemeDAOs = schemeService.getAllSchemeDAOs();
+            allSchemeDTOs = schemeService.getAllSchemeDTOs();
         } else if (tabNumber == 1) {
-            allUserDAOs = userService.getAllUserDAOs();
+            allUserDTOs = userService.getAllUserDTOs();
         }
-        model.addAttribute("allSchemeDAOs", allSchemeDAOs);
-        model.addAttribute("allUserDAOs", allUserDAOs);
+        model.addAttribute("allSchemeDTOs", allSchemeDTOs);
+        model.addAttribute("allUserDTOs", allUserDTOs);
         return "/WEB-INF/views/admin-panel.jsp";
     }
 
@@ -68,9 +68,9 @@ public class AdminPanelPageController {
     @GetMapping("/add-places")
     public String showPlacesAddingPage(Model model,
                                        @RequestParam(name = "scheme") Long schemeId) {
-        List<PlaceDAO> allPlacesDAOs = placeService.getAllPlaceDAOs();
+        List<PlaceDTO> allPlacesDAOs = placeService.getAllPlaceDTOs();
         model.addAttribute("schemeId", schemeId);
-        model.addAttribute("allPlacesDAOs", allPlacesDAOs);
+        model.addAttribute("allPlacesDTOs", allPlacesDAOs);
         return "/WEB-INF/views/add-places.jsp";
     }
 
