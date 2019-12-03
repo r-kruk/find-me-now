@@ -68,7 +68,7 @@ public class AdminPanelPageController {
     @GetMapping("/add-places")
     public String showPlacesAddingPage(Model model,
                                        @RequestParam(name = "scheme") Long schemeId) {
-        List<PlaceDTO> allPlacesDTOs = placeService.getAllPlaceDTOs();
+        List<PlaceDTO> allPlacesDTOs = placeService.getAllPlaceDTOsBySchemeId(schemeId);
         model.addAttribute("schemeId", schemeId);
         model.addAttribute("allPlacesDTOs", allPlacesDTOs);
         return "/WEB-INF/views/add-places.jsp";

@@ -30,10 +30,11 @@ public class PlaceService {
         placeRepository.save(new Place(name, "", schemeRepository.getOne(schemeId), positionX, positionY));
     }
 
-    public List<PlaceDTO> getAllPlaceDTOs() {
+    public List<PlaceDTO> getAllPlaceDTOsBySchemeId(Long id) {
         List<Place> allPlaces = placeRepository.findAll();
         List<PlaceDTO> allPlacesDTO = new ArrayList<>();
         for (Place place : allPlaces) {
+            if (place.getScheme().getId().equals(id))
             allPlacesDTO.add(modelMapper.convert(place));
         }
         return allPlacesDTO;

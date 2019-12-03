@@ -28,7 +28,7 @@ public class SchemeDetailsPageController {
     @GetMapping
     public String showSchemeDetailsPage(Model model, Long id) {
         SchemeDTO schemeDTO = schemeService.getSchemeDTOById(id);
-        List<PlaceDTO> allPlaceDTOS = placeService.getAllPlaceDTOs();
+        List<PlaceDTO> allPlaceDTOS = placeService.getAllPlaceDTOsBySchemeId(id);
         model.addAttribute("schemeDTO", schemeDTO);
         model.addAttribute("allPlaceDTOs", allPlaceDTOS);
         return "/WEB-INF/views/scheme-details.jsp";
