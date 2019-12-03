@@ -42,7 +42,13 @@
     <br>
     <div class="row">
         <div class="col-12 text-center">
-            <img src="/scheme?id=${schemeDAO.id}" class="img-fluid" alt="Scheme">
+            <img src="/scheme?id=${schemeDAO.id}" class="img-fluid w-100" alt="Scheme">
+            <div>
+                <c:forEach items="${allPlaceDAOs}" var="place" varStatus="placeStatus">
+                    <i class="fa fa-times"
+                       style="color: yellow; position: absolute; left: ${place.coordinateX + 10}; top: ${place.coordinateY - 10}"></i>
+                </c:forEach>
+            </div>
         </div>
     </div>
 </div>
