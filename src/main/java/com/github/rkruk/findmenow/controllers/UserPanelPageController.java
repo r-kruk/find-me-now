@@ -77,6 +77,10 @@ public class UserPanelPageController {
         List<SchemeDTO> allActiveSchemeDTOS = schemeService.getAllActiveSchemeDTOs();
         model.addAttribute("allActiveSchemeDTOS", allActiveSchemeDTOS);
         model.addAttribute("visibleSchemeId", visibleSchemeId);
+
+        List<PlaceDTO> availablePlaceDTOS = placeService.getAllFreePlaceDTOBySchemeId(visibleSchemeId);
+        model.addAttribute("availablePlaceDTOS", availablePlaceDTOS);
+
         // TODO: 03.12.2019 Create JSP page ("take-place.jsp" will be good)
         return "/WEB-INF/views/take-place.jsp";
     }
