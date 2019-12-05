@@ -40,7 +40,23 @@
                 <br>
                 <br>
                 <div class="h3">
-                    Jak najdłużej. ;)
+                    <p class="h2">Strona główna</p>
+                    <hr>
+                    Strona główna wyświetla dostępne schematy na których można wyszukiwać osoby, które zadeklarowały
+                    swoją obecność. Po wpisaniu nazwiska szukanej osoby, jeżeli została ona znaleziona, jej
+                    zadeklarowana lokalizacja zostanie zaznaczona na schemacie.
+                    <br>
+                    <br>
+                    <p class="h2">Panel użytkownika</p>
+                    <hr>
+                    Panel użytkownika umożliwia zarejestrowanemu użytkownikowi zadeklarowanie swojej lokalizacji,
+                    dzięki czemu będzie go można wyszukać na stronie głównej.
+                    <br>
+                    <br>
+                    <p class="h2">Panel administratora</p>
+                    <hr>
+                    Panel administratora umożliwia dodawanie schematów, zarządzanie schematami, dodawanie miejsc
+                    dostępnych do rezerwacji oraz zarządzanie użytkownikami.
                 </div>
             </c:if>
         </div>

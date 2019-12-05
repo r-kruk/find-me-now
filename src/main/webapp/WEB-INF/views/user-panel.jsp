@@ -24,7 +24,7 @@
         <div class="col-10 text-left">
             <c:if test="${activeTab == 0}">
                 <br>
-                <p class="h3">Nazwa uzytkownika: ${userDTO.username}</p>
+                <p class="h3">Nazwa użytkownika: ${userDTO.username}</p>
                 <br>
                 <p class="h5">Imię: ${userDTO.firstName}</p>
                 <p class="h5">Nazwisko: ${userDTO.lastName}</p>
