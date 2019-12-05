@@ -11,4 +11,7 @@ public interface PlaceRepository extends JpaRepository <Place, Long> {
 
 
     List<Place> findPlaceBySchemeId(Long schemeId);
+
+    Place findPlaceByName(String name);
+
 }

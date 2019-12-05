@@ -32,10 +32,10 @@
     <div class="row">
         <div class="col-1"></div>
         <div class="col-8 h3 text-center">
-            <form method="post" action="/?id=${visibleSchemeId}">
+            <form method="post" action="/user-panel/take-place">
                 <div class="form-row">
                     <div class="col-3 form-group">
-                        <select required name="freePlace">
+                        <select required name="placeName">
                             <c:forEach items="${availablePlaceDTOS}" var="placeDTO">
                             <option value="${placeDTO.name}">${placeDTO.name}</option>
                             </c:forEach>

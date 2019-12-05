@@ -64,4 +64,10 @@ public class PlaceService {
         System.out.println(availablePlacesDTO.size());
         return availablePlacesDTO;
     }
+
+    public PlaceDTO getPlaceDTOByName(String placeName) {
+        Place place = placeRepository.findPlaceByName(placeName);
+        PlaceDTO placeDTO = modelMapper.convert(place);
+        return placeDTO;
+    }
 }

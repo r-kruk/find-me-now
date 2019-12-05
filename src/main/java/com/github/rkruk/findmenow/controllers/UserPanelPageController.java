@@ -77,7 +77,6 @@ public class UserPanelPageController {
         List<SchemeDTO> allActiveSchemeDTOS = schemeService.getAllActiveSchemeDTOs();
         model.addAttribute("allActiveSchemeDTOS", allActiveSchemeDTOS);
         model.addAttribute("visibleSchemeId", visibleSchemeId);
-
         List<PlaceDTO> availablePlaceDTOS = placeService.getAllFreePlaceDTOBySchemeId(visibleSchemeId);
         model.addAttribute("availablePlaceDTOS", availablePlaceDTOS);
 
@@ -86,13 +85,14 @@ public class UserPanelPageController {
     }
 
     @PostMapping("/take-place")
-    public String takePlace(Model model, Long id, User user, Place place) {
+    public String takePlace(Principal principal, String placeName) {
+        PlaceDTO placeDTO = placeService.getPlaceDTOByName(placeName);
+        String username = principal.getName();
+        Long id = userService.getIdOfLoggedUser(username);
         UserDTO userDTO = userService.getOne(id);
-        PlaceDTO placeDTO = placeService.getPlaceDTOById(id);
-
-
+        userService.bookPlaceForUser(userDTO, placeDTO);
 
         // TODO: 03.12.2019 Make user able to take place
-        return null;
+        return "redirect:/user-panel";
     }
 }
