@@ -17,12 +17,12 @@
         <div class="col-6">
             <form method="post" enctype="multipart/form-data" action="/admin-panel/add-scheme">
                 <div class="form-group">
+                    <label for="file">Plik ze schematem</label>
+                    <input type="file" required name="file" id="file" class="form-control"/>
+                </div>
+                <div class="form-group">
                     <label for="name">Nazwa schematu</label>
                     <input type="text" required name="name" id="name" class="form-control" placeholder="Podaj nazwę dla schematu"/>
-                </div>
-               <div class="form-group">
-                    <label for="file">Plik</label>
-                    <input type="file" required name="file" id="file" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label for="description">Opis schematu</label>
