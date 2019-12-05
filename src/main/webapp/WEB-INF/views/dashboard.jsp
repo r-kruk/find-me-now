@@ -27,7 +27,7 @@
                     <br>
                 </c:forEach>
             </div>
-            <div class="col-9 h1 text-center">
+            <div class="col-8 h1 text-center">
                 <form method="post" action="/?id=${visibleSchemeId}">
                     <div class="form-row">
                         <div class="col-11 form-group">
