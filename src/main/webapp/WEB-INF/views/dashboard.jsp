@@ -46,6 +46,12 @@
                 <c:if test="${visibleSchemeId != 0}">
                     <img src="/scheme?id=${visibleSchemeId}" class="img-fluid w-100" alt="Scheme">
                 </c:if>
+                <c:if test="${coordinateX > 0 && coordinateY > 0}">
+                    <div>
+                        <i class="fa fa-times"
+                           style="color: yellow; position: absolute; left: ${coordinateX + 10}; top: ${coordinateY - 10}">${lastName}</i>
+                    </div>
+                </c:if>
             </div>
             <div class="col-1"></div>
         </c:if>

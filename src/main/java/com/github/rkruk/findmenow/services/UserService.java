@@ -1,8 +1,10 @@
 package com.github.rkruk.findmenow.services;
 
+import com.github.rkruk.findmenow.dtos.OccupiedPlaceInSchemeDTO;
 import com.github.rkruk.findmenow.dtos.PlaceDTO;
 import com.github.rkruk.findmenow.dtos.UserDTO;
 import com.github.rkruk.findmenow.models.Place;
+import com.github.rkruk.findmenow.models.Scheme;
 import com.github.rkruk.findmenow.models.User;
 import com.github.rkruk.findmenow.repositories.PlaceRepository;
 import com.github.rkruk.findmenow.repositories.UserRepository;
@@ -65,12 +67,17 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public Long getPlaceIdOfSearchedUser(String lastName) {
+    public OccupiedPlaceInSchemeDTO getPlaceIdOfSearchedUser(String lastName) {
         User user = userRepository.findByLastNameEquals(lastName);
-        if (user.getPlace() == null) {
-            return 0L;
-        }
-        return 1L;
+        Place place = user.getPlace();
+        Scheme scheme = place.getScheme();
+        scheme.getId();
+        OccupiedPlaceInSchemeDTO occupiedPlaceInSchemeDTO = new OccupiedPlaceInSchemeDTO();
+        occupiedPlaceInSchemeDTO.setPlaceId(place.getId());
+        occupiedPlaceInSchemeDTO.setSchemeId(scheme.getId());
+        occupiedPlaceInSchemeDTO.setUserId(user.getId());
+
+        return occupiedPlaceInSchemeDTO;
     }
 
     public void bookPlaceForUser(UserDTO userDTO, PlaceDTO placeDTO) {
@@ -80,6 +87,8 @@ public class UserService {
         user.setPlace(place);
         userRepository.save(user);
     }
+
+
 
 
 

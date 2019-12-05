@@ -95,4 +95,6 @@ public class UserPanelPageController {
         // TODO: 03.12.2019 Make user able to take place
         return "redirect:/user-panel";
     }
+
+
 }
