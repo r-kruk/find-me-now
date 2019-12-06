@@ -21,6 +21,7 @@
             </div>
             <hr>
             <br>
+            <br>
         </div>
         <div class="col-2"></div>
     </div>
@@ -32,7 +33,7 @@
             <a href="/help?tab=1" class="btn btn-primary float-right">Jak używać?</a>
         </div>
         <div class="col-1"></div>
-        <div class="col-8 text-left">
+        <div class="col-10 text-left">
             <c:if test="${tabNumber == 0}">
                 <div class="h3">
                     Aplikacja służy do zarządzania miejscami w organizacji. Umożliwia również odnalezienie pracownika,
@@ -61,7 +62,6 @@
                 </div>
             </c:if>
         </div>
-        <div class="col-2"></div>
     </div>
 </div>
 </body>
