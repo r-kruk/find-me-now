@@ -15,6 +15,24 @@
 <jsp:include page="fragments/menu.jsp"/>
 <div class="container-fluid">
     <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <form method="post" action="/?id=${visibleSchemeId}">
+                <div class="form-row">
+                    <div class="col-11 form-group">
+                        <input type="text" required name="search" id="search" class="form-control"
+                               placeholder="Podaj nazwisko"/>
+                    </div>
+                    <div class="col-1 form-group">
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> Szukaj</button>
+                    </div>
+                </div>
+                <sec:csrfInput/>
+            </form>
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <div class="row">
         <c:if test="${allActiveSchemeDTOS.size() == 0}">
             <div class="col-12 display-4 text-center">Baza danych nie zawiera aktywnych schematów!</div>
         </c:if>
@@ -27,19 +45,7 @@
                     <br>
                 </c:forEach>
             </div>
-            <div class="col-8 h1 text-center">
-                <form method="post" action="/?id=${visibleSchemeId}">
-                    <div class="form-row">
-                        <div class="col-11 form-group">
-                            <input type="text" required name="search" id="search" class="form-control"
-                                   placeholder="Podaj nazwisko"/>
-                        </div>
-                        <div class="col-1 form-group">
-                            <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> Szukaj</button>
-                        </div>
-                    </div>
-                    <sec:csrfInput/>
-                </form>
+            <div class="col-8">
                 <c:if test="${visibleSchemeId == 0}">
                     <img src="/scheme?id=${allActiveSchemeDTOS.get(0).id}" class="img-fluid w-100" alt="Scheme">
                 </c:if>
@@ -47,9 +53,9 @@
                     <img src="/scheme?id=${visibleSchemeId}" class="img-fluid w-100" alt="Scheme">
                 </c:if>
                 <c:if test="${coordinateX > 0 && coordinateY > 0}">
-                    <div>
+                    <div class="h5">
                         <i class="fa fa-times"
-                           style="color: yellow; position: absolute; left: ${coordinateX + 10}; top: ${coordinateY - 10}">${lastName}</i>
+                           style="color: red; position: absolute; left: ${coordinateX + 10}; top: ${coordinateY - 10}"> ${lastName}</i>
                     </div>
                 </c:if>
             </div>
