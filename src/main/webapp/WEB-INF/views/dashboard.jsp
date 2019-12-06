@@ -53,9 +53,9 @@
                     <img src="/scheme?id=${visibleSchemeId}" class="img-fluid w-100" alt="Scheme">
                 </c:if>
                 <c:if test="${coordinateX > 0 && coordinateY > 0}">
-                    <div class="h5">
-                        <i class="fa fa-times"
-                           style="color: red; position: absolute; left: ${coordinateX + 10}; top: ${coordinateY - 10}"> ${lastName}</i>
+                    <div class="h1">
+                        <i class="fa fa-map-marker"
+                           style="color: blue; position: absolute; left: ${coordinateX + 10}; top: ${coordinateY - 10}"></i>
                     </div>
                 </c:if>
             </div>
