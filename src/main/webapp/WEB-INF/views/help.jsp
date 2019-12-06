@@ -20,8 +20,6 @@
                 <i class="fa fa-users"></i>Find me now!
             </div>
             <hr>
-            <br>
-            <br>
         </div>
         <div class="col-2"></div>
     </div>
@@ -34,6 +32,8 @@
         </div>
         <div class="col-1"></div>
         <div class="col-10 text-left">
+            <br>
+            <br>
             <c:if test="${tabNumber == 0}">
                 <div class="h3">
                     Aplikacja służy do zarządzania miejscami w organizacji. Umożliwia również odnalezienie pracownika,
