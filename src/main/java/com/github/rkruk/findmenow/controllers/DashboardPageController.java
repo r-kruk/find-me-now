@@ -43,6 +43,9 @@ public class DashboardPageController {
                                      @RequestParam(required = false, defaultValue = "", name = "lastName") String lastName) {
         List<SchemeDTO> allActiveSchemeDTOS = schemeService.getAllActiveSchemeDTOs();
         model.addAttribute("allActiveSchemeDTOS", allActiveSchemeDTOS);
+        if (visibleSchemeId.equals(0L)) {
+            visibleSchemeId = allActiveSchemeDTOS.get(0).getId();
+        }
         model.addAttribute("visibleSchemeId", visibleSchemeId);
         model.addAttribute("coordinateX", coordinateX);
         model.addAttribute("coordinateY", coordinateY);
