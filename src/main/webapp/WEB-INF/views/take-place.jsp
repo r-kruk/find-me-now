@@ -64,14 +64,25 @@
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-            <img src="/scheme?id=${visibleSchemeId}" class="img-fluid w-100" alt="Scheme">
+            <img src="/scheme?id=${visibleSchemeId}" class="img-fluid w-100" alt="Scheme" id="image">
             <div>
                 <i class="fa fa-times-circle" id="selectedPlace" style="display: none"></i>
             </div>
             <div>
                 <c:forEach items="${availablePlaceDTOS}" var="place">
-                    <i class="fa fa-times"
-                       style="color: yellow; position: absolute; left: ${place.coordinateX + 10}; top: ${place.coordinateY - 10}"> ${place.name}</i>
+                    <i class="fa fa-times" id="${place.id}" style="display: none"> ${place.name}</i>
+                    <script>
+                        (function() {
+                            var schemeWidth = document.getElementById("image").clientWidth;
+                            var schemeHeight = document.getElementById("image").clientHeight;
+                            var place = document.getElementById(${place.id});
+                            place.style.display = '';
+                            place.style.color = 'yellow';
+                            place.style.position = 'absolute';
+                            place.style.left = Number(${place.coordinateX}) / 100 * schemeWidth + 10 + '';
+                            place.style.top = Number(${place.coordinateY}) / 100 * schemeHeight - 4 + '';
+                        })();
+                    </script>
                 </c:forEach>
             </div>
         </div>
@@ -86,6 +97,8 @@
         window.location.replace("/user-panel/take-place?id=" + selectedOption);
     }
     function showPlace() {
+        var schemeWidth = document.getElementById("image").clientWidth;
+        var schemeHeight = document.getElementById("image").clientHeight;
         var placesList = document.getElementById("places");
         var positionX = placesList.options[placesList.selectedIndex].getAttribute("data-position-x");
         var positionY = placesList.options[placesList.selectedIndex].getAttribute("data-position-y");
@@ -93,9 +106,12 @@
         selectedPlace.style.display = '';
         selectedPlace.style.color = 'blue';
         selectedPlace.style.position = 'absolute';
-        selectedPlace.style.left = Number(positionX) + 10 + '';
-        selectedPlace.style.top = Number(positionY) - 10 + '';
+        // selectedPlace.style.left = Number(positionX) + 10 + '';
+        selectedPlace.style.left = Number(positionX) / 100 * schemeWidth + 10 + '';
+        // selectedPlace.style.top = Number(positionY) - 10 + '';
+        selectedPlace.style.top = Number(positionY) / 100 * schemeHeight - 4 + '';
         selectedPlace.style.zIndex = '1';
+        console.log(document.getElementById("image").clientHeight);
     }
 </script>
 </body>
