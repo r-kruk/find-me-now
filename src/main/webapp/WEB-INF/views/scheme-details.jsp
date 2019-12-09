@@ -41,7 +41,8 @@
     </div>
     <br>
     <div class="row">
-        <div class="col-12 text-center">
+        <div class="col-1"></div>
+        <div class="col-10 text-center">
             <img src="/scheme?id=${schemeDTO.id}" class="img-fluid w-100" alt="Scheme">
             <div>
                 <c:forEach items="${allPlaceDTOs}" var="place" varStatus="placeStatus">

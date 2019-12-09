@@ -3,8 +3,6 @@ package com.github.rkruk.findmenow.controllers;
 import com.github.rkruk.findmenow.dtos.PlaceDTO;
 import com.github.rkruk.findmenow.dtos.SchemeDTO;
 import com.github.rkruk.findmenow.dtos.UserDTO;
-import com.github.rkruk.findmenow.models.Place;
-import com.github.rkruk.findmenow.models.User;
 import com.github.rkruk.findmenow.services.PlaceService;
 import com.github.rkruk.findmenow.services.SchemeService;
 import com.github.rkruk.findmenow.services.UserService;
@@ -76,25 +74,22 @@ public class UserPanelPageController {
                                     @RequestParam(required = false, defaultValue = "0", name = "id") Long visibleSchemeId) {
         List<SchemeDTO> allActiveSchemeDTOS = schemeService.getAllActiveSchemeDTOs();
         model.addAttribute("allActiveSchemeDTOS", allActiveSchemeDTOS);
+        if (visibleSchemeId.equals(0L)) {
+            visibleSchemeId = allActiveSchemeDTOS.get(0).getId();
+        }
         model.addAttribute("visibleSchemeId", visibleSchemeId);
         List<PlaceDTO> availablePlaceDTOS = placeService.getAllFreePlaceDTOBySchemeId(visibleSchemeId);
         model.addAttribute("availablePlaceDTOS", availablePlaceDTOS);
-
-        // TODO: 03.12.2019 Create JSP page ("take-place.jsp" will be good)
         return "/WEB-INF/views/take-place.jsp";
     }
 
     @PostMapping("/take-place")
-    public String takePlace(Principal principal, String placeName) {
-        PlaceDTO placeDTO = placeService.getPlaceDTOByName(placeName);
+    public String takePlace(Principal principal, Long placeId) {
+        PlaceDTO placeDTO = placeService.getPlaceDTOById(placeId);
         String username = principal.getName();
         Long id = userService.getIdOfLoggedUser(username);
         UserDTO userDTO = userService.getOne(id);
         userService.bookPlaceForUser(userDTO, placeDTO);
-
-        // TODO: 03.12.2019 Make user able to take place
         return "redirect:/user-panel";
     }
-
-
 }
