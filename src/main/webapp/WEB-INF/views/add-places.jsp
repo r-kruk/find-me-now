@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <script>
         function userClicked(event) {
-            var schemeX = event.offsetX;
-            var schemeY = event.offsetY;
+            var schemeWidth = document.getElementById("image").clientWidth;
+            var schemeHeight = document.getElementById("image").clientHeight;
+            var schemeX = Math.floor(event.offsetX / schemeWidth * 100);
+            var schemeY = Math.floor(event.offsetY / schemeHeight * 100);
             var positionX = document.getElementById("positionX");
             var positionY = document.getElementById("positionY");
             var pointer = document.getElementById("X");
@@ -20,8 +22,11 @@
             pointer.style.display = '';
             pointer.style.color = 'red';
             pointer.style.position = 'absolute';
-            pointer.style.left = schemeX + 10 + '';
-            pointer.style.top = schemeY - 10 + '';
+            pointer.style.left = schemeX / 100 * schemeWidth + 10 + '';
+            pointer.style.top = schemeY / 100 * schemeHeight - 4 + '';
+        }
+        function test() {
+            console.log("AAAAAAAAAAA");
         }
     </script>
 </head>
@@ -73,12 +78,23 @@
     <div class="row">
         <div class="col-12 text-center">
             <div>
-                <img src="/scheme?id=${schemeId}" class="img-fluid border w-100" alt="Scheme" onclick="userClicked(event)">
+                <img src="/scheme?id=${schemeId}" class="img-fluid border w-100" alt="Scheme" onclick="userClicked(event)" id="image">
                 <div>
                     <i class="fa fa-times" id="X" style="display: none"></i>
                     <c:forEach items="${allPlacesDTOs}" var="place" varStatus="placeStatus">
-                        <i class="fa fa-times"
-                           style="color: yellow; position: absolute; left: ${place.coordinateX + 10}; top: ${place.coordinateY - 10}"></i>
+                        <i class="fa fa-times" id="${place.id}" style="display: none"></i>
+                        <script>
+                            (function() {
+                                var schemeWidth = document.getElementById("image").clientWidth;
+                                var schemeHeight = document.getElementById("image").clientHeight;
+                                var place = document.getElementById(${place.id});
+                                place.style.display = '';
+                                place.style.color = 'yellow';
+                                place.style.position = 'absolute';
+                                place.style.left = Number(${place.coordinateX}) / 100 * schemeWidth + 10 + '';
+                                place.style.top = Number(${place.coordinateY}) / 100 * schemeHeight - 4 + '';
+                            })();
+                        </script>
                     </c:forEach>
                 </div>
             </div>
