@@ -2,6 +2,8 @@ package com.github.rkruk.findmenow.dtos;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -15,5 +17,5 @@ public class UserDTO {
     private String lastName;
     private Boolean active;
     private String role;
-    private Long placeId;
+    private List<Long> placesId;
 }

@@ -55,8 +55,11 @@ public class PlaceService {
         List<User> userOccupyingPlaces = userRepository.findAll();
         List<PlaceDTO> availablePlacesDTO = new ArrayList<>();
         for (User user : userOccupyingPlaces) {
-            if (user.getPlace() != null) {
-                availablePlaces.remove(placeRepository.getOne(user.getPlace().getId()));
+            if (user.getPlaces() != null) {
+                List<Place> places = user.getPlaces();
+                for (Place place : places) {
+                    availablePlaces.remove(placeRepository.getOne(place.getId()));
+                }
             }
         }
         for (Place place : availablePlaces) {

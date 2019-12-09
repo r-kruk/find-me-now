@@ -50,18 +50,18 @@ public class DashboardPageController {
         return "/WEB-INF/views/dashboard.jsp";
     }
 
-    @PostMapping
-    public String userToBeFound(String search) {
-        OccupiedPlaceInSchemeDTO occupiedPlaceInSchemeDTO = userService.getPlaceIdOfSearchedUser(search);
-        PlaceDTO placeDTO = placeService.getPlaceDTOById(occupiedPlaceInSchemeDTO.getPlaceId());
-        SchemeDTO schemeDTO = schemeService.getSchemeDTOById(occupiedPlaceInSchemeDTO.getSchemeId());
-        UserDTO userDTO = userService.getOne(occupiedPlaceInSchemeDTO.getUserId());
-        Long coordinateX = placeDTO.getCoordinateX();
-        Long coordinateY = placeDTO.getCoordinateY();
-        Long schemeId = schemeDTO.getId();
-        String lastName = userDTO.getLastName();
-
-        return "redirect:/?id=" + schemeId + "&x=" + coordinateX + "&y=" + coordinateY + "&lastName=" + lastName;
-    }
+//    @PostMapping
+//    public String userToBeFound(String search) {
+//        OccupiedPlaceInSchemeDTO occupiedPlaceInSchemeDTO = userService.getPlaceIdOfSearchedUser(search);
+//        PlaceDTO placeDTO = placeService.getPlaceDTOById(occupiedPlaceInSchemeDTO.getPlaceId());
+//        SchemeDTO schemeDTO = schemeService.getSchemeDTOById(occupiedPlaceInSchemeDTO.getSchemeId());
+//        UserDTO userDTO = userService.getOne(occupiedPlaceInSchemeDTO.getUserId());
+//        Long coordinateX = placeDTO.getCoordinateX();
+//        Long coordinateY = placeDTO.getCoordinateY();
+//        Long schemeId = schemeDTO.getId();
+//        String lastName = userDTO.getLastName();
+//
+//        return "redirect:/?id=" + schemeId + "&x=" + coordinateX + "&y=" + coordinateY + "&lastName=" + lastName;
+//    }
 
 }
