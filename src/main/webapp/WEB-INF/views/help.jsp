@@ -14,6 +14,16 @@
 <jsp:include page="fragments/menu.jsp"/>
 <div class="container">
     <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="h1">
+                <i class="fa fa-users"></i>Find me now!
+            </div>
+            <hr>
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <div class="row">
         <div class="col-1">
             <a href="/help?tab=0" class="btn btn-primary float-right">O programie</a>
             <br>
@@ -22,23 +32,15 @@
         </div>
         <div class="col-1"></div>
         <div class="col-10 text-left">
+            <br>
+            <br>
             <c:if test="${tabNumber == 0}">
-                <div class="h1">
-                    <i class="fa fa-users"></i>Find me now!
-                </div>
-                <br>
-                <br>
                 <div class="h3">
                     Aplikacja służy do zarządzania miejscami w organizacji. Umożliwia również odnalezienie pracownika,
                     jeżeli ten wykorzystuje któreś z zarządzanych w aplikacji miejsc.
                 </div>
             </c:if>
             <c:if test="${tabNumber == 1}">
-                <div class="h1">
-                    <i class="fa fa-users"></i>Find me now!
-                </div>
-                <br>
-                <br>
                 <div class="h3">
                     <p class="h2">Strona główna</p>
                     <hr>

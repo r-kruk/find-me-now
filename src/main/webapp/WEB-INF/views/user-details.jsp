@@ -13,6 +13,22 @@
 <jsp:include page="fragments/menu.jsp"/>
 <div class="container">
     <div class="row">
+        <div class="col-2"></div>
+        <div class="col-10">
+            <c:if test="${activeTab == 0}">
+                <p class="h3">Nazwa użytkownika: ${userDTO.username}</p>
+                <br>
+            </c:if>
+            <c:if test="${activeTab == 1}">
+                <div class="text-center">
+                    <a href="/user-panel/take-place" class="btn btn-primary">Zajmij miejsce</a>
+                    <br>
+                    <br>
+                </div>
+            </c:if>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-1">
             <a href="/user-details?id=${userDTO.id}&tab=0" class="btn btn-primary float-right">Informacje</a>
             <br>
@@ -22,9 +38,6 @@
         <div class="col-1"></div>
         <div class="col-10 text-left">
             <c:if test="${activeTab == 0}">
-                <br>
-                <p class="h3">Nazwa użytkownika: ${userDTO.username}</p>
-                <br>
                 <p class="h5">Imię: ${userDTO.firstName}</p>
                 <p class="h5">Nazwisko: ${userDTO.lastName}</p>
                 <br>
@@ -48,9 +61,6 @@
             </c:if>
             <c:if test="${activeTab == 1}">
                 <div class="h1 text-center">
-                    <a href="/user-panel/take-place" class="btn btn-primary">Zajmij miejsce</a>
-                    <br>
-                    <br>
                     <c:if test="${placeDTO == null}">
                         <div class="h1 text-center">
                             Tu kiedyś będą rezerwacje użytkownika.
