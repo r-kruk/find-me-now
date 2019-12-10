@@ -40,7 +40,8 @@
             <div class="col-1"></div>
             <div class="col-1">
                 <c:forEach items="${allActiveSchemeDTOS}" var="schemeDTO" varStatus="schemeDAOStatus">
-                    <a href="/?id=${schemeDTO.id}" class="btn btn-primary float-right">${schemeDTO.name}</a>
+                    <a href="/?id=${schemeDTO.id}" class="btn btn-primary float-right d-none d-lg-block">${schemeDTO.name}</a>
+                    <a href="/?id=${schemeDTO.id}" class="btn btn-primary float-right d-block d-lg-none">${schemeDTO.id}</a>
                     <br>
                     <br>
                 </c:forEach>
@@ -50,7 +51,6 @@
                 <c:if test="${coordinateX > 0 && coordinateY > 0}">
                     <div class="h1">
                         <i class="fa fa-street-view" id="place" style="display: none"></i>
-<%--                        <i class="fa fa-bullseye" id="place" style="display: none"></i>--%>
                         <script>
                             (function() {
                                 var schemeWidth = document.getElementById("image").clientWidth;
