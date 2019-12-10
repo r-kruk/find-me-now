@@ -14,15 +14,25 @@
 <div class="container">
     <div class="row">
         <div class="col-1">
-            <a href="/admin-panel?tab=0" class="btn btn-primary float-right">Schematy</a>
+            <a href="/admin-panel?tab=0" class="btn btn-primary float-right d-none d-lg-block">
+                <i class="fa fa-map"></i> Schematy
+            </a>
+            <a href="/admin-panel?tab=0" class="btn btn-primary float-right d-block d-lg-none">
+                <i class="fa fa-map"></i>
+            </a>
             <br>
             <br>
-            <a href="/admin-panel?tab=1" class="btn btn-primary float-right">Użytkownicy</a>
+            <a href="/admin-panel?tab=1" class="btn btn-primary float-right d-none d-lg-block">
+                <i class="fa fa-users"></i> Użytkownicy
+            </a>
+            <a href="/admin-panel?tab=1" class="btn btn-primary float-right d-block d-lg-none">
+                <i class="fa fa-users"></i>
+            </a>
         </div>
         <div class="col-1"></div>
         <div class="col-10 text-center">
             <c:if test="${tabNumber == 0}">
-                <a href="/admin-panel/add-scheme" class="btn btn-primary">Dodaj schemat</a>
+                <a href="/admin-panel/add-scheme" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Dodaj schemat</a>
                 <br>
                 <br>
                 <table class="table table-hover table-bordered text-center">
