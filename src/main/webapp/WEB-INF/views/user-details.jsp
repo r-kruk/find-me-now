@@ -21,7 +21,7 @@
             </c:if>
             <c:if test="${activeTab == 1}">
                 <div class="text-center">
-                    <a href="/user-panel/take-place" class="btn btn-primary">Zajmij miejsce</a>
+                    <a href="/user-panel/take-place" class="btn btn-primary"><i class="fa fa-arrow-down"></i> Zajmij miejsce</a>
                     <br>
                     <br>
                 </div>
