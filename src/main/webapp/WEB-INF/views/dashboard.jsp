@@ -40,7 +40,8 @@
             <div class="col-1"></div>
             <div class="col-1">
                 <c:forEach items="${allActiveSchemeDTOS}" var="schemeDTO" varStatus="schemeDAOStatus">
-                    <a href="/?id=${schemeDTO.id}" class="btn btn-primary float-right">${schemeDTO.name}</a>
+                    <a href="/?id=${schemeDTO.id}" class="btn btn-primary float-right d-none d-lg-block">${schemeDTO.name}</a>
+                    <a href="/?id=${schemeDTO.id}" class="btn btn-primary float-right d-block d-lg-none">${schemeDTO.id}</a>
                     <br>
                     <br>
                 </c:forEach>
