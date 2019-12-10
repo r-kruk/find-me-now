@@ -49,7 +49,8 @@
                     <img src="/scheme?id=${visibleSchemeId}" class="img-fluid w-100" alt="Scheme" id="image">
                 <c:if test="${coordinateX > 0 && coordinateY > 0}">
                     <div class="h1">
-                        <i class="fa fa-bullseye" id="place" style="display: none"></i>
+                        <i class="fa fa-street-view" id="place" style="display: none"></i>
+<%--                        <i class="fa fa-bullseye" id="place" style="display: none"></i>--%>
                         <script>
                             (function() {
                                 var schemeWidth = document.getElementById("image").clientWidth;
@@ -58,8 +59,8 @@
                                 place.style.display = '';
                                 place.style.color = 'red';
                                 place.style.position = 'absolute';
-                                place.style.left = Number(${coordinateX}) / 100 * schemeWidth + 10 + '';
-                                place.style.top = Number(${coordinateY}) / 100 * schemeHeight - 4 + '';
+                                place.style.left = Number(${coordinateX}) / 100 * schemeWidth + 5 + '';
+                                place.style.top = Number(${coordinateY}) / 100 * schemeHeight - 25 + '';
                             })();
                         </script>
                     </div>
