@@ -74,7 +74,7 @@ public class UserPanelPageController {
                                     @RequestParam(required = false, defaultValue = "0", name = "id") Long visibleSchemeId) {
         List<SchemeDTO> allActiveSchemeDTOS = schemeService.getAllActiveSchemeDTOs();
         model.addAttribute("allActiveSchemeDTOS", allActiveSchemeDTOS);
-        if (visibleSchemeId.equals(0L)) {
+        if (visibleSchemeId.equals(0L) && allActiveSchemeDTOS.size() > 0) {
             visibleSchemeId = allActiveSchemeDTOS.get(0).getId();
         }
         model.addAttribute("visibleSchemeId", visibleSchemeId);
