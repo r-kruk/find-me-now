@@ -51,7 +51,6 @@
                 <c:if test="${coordinateX > 0 && coordinateY > 0}">
                     <div class="h1">
                         <i class="fa fa-street-view" id="place" style="display: none"></i>
-<%--                        <i class="fa fa-bullseye" id="place" style="display: none"></i>--%>
                         <script>
                             (function() {
                                 var schemeWidth = document.getElementById("image").clientWidth;
