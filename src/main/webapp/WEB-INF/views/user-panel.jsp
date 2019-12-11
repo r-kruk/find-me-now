@@ -22,7 +22,7 @@
             </c:if>
             <c:if test="${activeTab == 1}">
                 <div class="text-center">
-                    <a href="/user-panel/take-place" class="btn btn-primary">Zajmij miejsce</a>
+                    <a href="/user-panel/take-place" class="btn btn-primary"><i class="fa fa-arrow-down"></i> Zajmij miejsce</a>
                     <br>
                     <br>
                 </div>
@@ -31,10 +31,20 @@
     </div>
     <div class="row">
         <div class="col-1">
-            <a href="/user-panel?tab=0" class="btn btn-primary float-right">Informacje</a>
+            <a href="/user-panel?tab=0" class="btn btn-primary float-right d-none d-lg-block">
+                <i class="fa fa-info-circle"></i> Informacje
+            </a>
+            <a href="/user-panel?tab=0" class="btn btn-primary float-right d-block d-lg-none">
+                <i class="fa fa-info-circle"></i>
+            </a>
             <br>
             <br>
-            <a href="/user-panel?tab=1" class="btn btn-primary float-right">Rezerwacje</a>
+            <a href="/user-panel?tab=1" class="btn btn-primary float-right d-none d-lg-block">
+                <i class="fa fa-table"></i> Rezerwacje
+            </a>
+            <a href="/user-panel?tab=1" class="btn btn-primary float-right d-block d-lg-none">
+                <i class="fa fa-table"></i>
+            </a>
         </div>
         <div class="col-1"></div>
         <div class="col-10 text-left">

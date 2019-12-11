@@ -74,6 +74,9 @@ public class DashboardPageController {
         }
 
         model.addAttribute("allActiveSchemeDTOS", allActiveSchemeDTOS);
+        if (visibleSchemeId.equals(0L) && allActiveSchemeDTOS.size() > 0) {
+            visibleSchemeId = allActiveSchemeDTOS.get(0).getId();
+        }
         model.addAttribute("visibleSchemeId", visibleSchemeId);
 
         return "/WEB-INF/views/dashboard.jsp";
@@ -93,6 +96,7 @@ public class DashboardPageController {
         }
 //        for each po PlaceDTOS
 //        creata Hash Set fillde by Schem ID
+
 
         redirectAttributes.addFlashAttribute("placeDTOS", placeDTOS);
         redirectAttributes.addFlashAttribute("schemeIds", schemeIds);

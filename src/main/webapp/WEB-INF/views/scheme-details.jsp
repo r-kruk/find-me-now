@@ -43,11 +43,22 @@
     <div class="row">
         <div class="col-1"></div>
         <div class="col-10 text-center">
-            <img src="/scheme?id=${schemeDTO.id}" class="img-fluid w-100" alt="Scheme">
+            <img src="/scheme?id=${schemeDTO.id}" class="img-fluid w-100" alt="Scheme" id="image">
             <div>
                 <c:forEach items="${allPlaceDTOs}" var="place" varStatus="placeStatus">
-                    <i class="fa fa-times"
-                       style="color: yellow; position: absolute; left: ${place.coordinateX + 10}; top: ${place.coordinateY - 10}"></i>
+                    <i class="fa fa-times" id="${place.id}" style="display: none"></i>
+                    <script>
+                        (function() {
+                            var schemeWidth = document.getElementById("image").clientWidth;
+                            var schemeHeight = document.getElementById("image").clientHeight;
+                            var place = document.getElementById(${place.id});
+                            place.style.display = '';
+                            place.style.color = 'yellow';
+                            place.style.position = 'absolute';
+                            place.style.left = Number(${place.coordinateX}) / 100 * schemeWidth + 10 + '';
+                            place.style.top = Number(${place.coordinateY}) / 100 * schemeHeight - 4 + '';
+                        })();
+                    </script>
                 </c:forEach>
             </div>
         </div>

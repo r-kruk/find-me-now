@@ -40,7 +40,6 @@
             <div class="col-1"></div>
             <div class="col-1">
                 <c:forEach items="${allActiveSchemeDTOS}" var="schemeDTO" varStatus="schemeDAOStatus">
-<%--                    <c:forEach items="${schemeIds}" var="schemeId">--%>
                         <c:if test="${schemeIds.contains(schemeDTO.id)}">
                             <a href="/?id=${schemeDTO.id}&user=${lastName}" class="btn btn-primary float-right">${schemeDTO.name}</a>
                             <br>
@@ -51,7 +50,6 @@
                             <br>
                             <br>
                         </c:if>
-<%--                    </c:forEach>--%>
                 </c:forEach>
             </div>
             <div class="col-8">
@@ -74,10 +72,6 @@
                         </div>
                     </c:if>
                 </c:forEach>
-                    <%--       jezeli idSchematu z danego place DTO zgadza sie z tym, ktory jest wyświttlany to for eachem wyswietlam place
-                    for each --%>
-                    <%--                X i Y pobrac z PlaceDTO  i podac w <i></i>  --%>
-<%--                <c:if test="${coordinateX > 0 && coordinateY > 0}">--%>
 
 
             </div>
