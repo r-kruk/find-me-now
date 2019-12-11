@@ -15,13 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @RequestMapping("/user-panel")
 public class UserPanelPageController {
 
-    private final UserService userService;
+    private UserService userService;
     private PlaceService placeService;
     private SchemeService schemeService;
 
@@ -40,17 +41,18 @@ public class UserPanelPageController {
         String username = principal.getName();
         Long id = userService.getIdOfLoggedUser(username);
         UserDTO userDTO = userService.getOne(id);
-        PlaceDTO placeDTO = null;
         SchemeDTO schemeDTO = null;
-        if (userDTO.getPlaceId() != null) {
-            placeDTO = placeService.getPlaceDTOById(userDTO.getPlaceId());
+        List<PlaceDTO> placeDTOS = new ArrayList<>();
+        if (userDTO.getPlacesId() != null) {
+            List<Long> placesId = userDTO.getPlacesId();
+            for (Long placeId : placesId) {
+                placeDTOS.add(placeService.getPlaceDTOById(placeId));
+            }
         }
-        if (placeDTO != null && placeDTO.getSchemeId() != null) {
-            schemeDTO = schemeService.getSchemeDTOById(placeDTO.getSchemeId());
-        }
+
         model.addAttribute("userDTO", userDTO);
         model.addAttribute("activeTab", activeTab);
-        model.addAttribute("placeDTO", placeDTO);
+        model.addAttribute("placeDTOS", placeDTOS);
         model.addAttribute("schemeDTO", schemeDTO);
         return "/WEB-INF/views/user-panel.jsp";
     }

@@ -46,6 +46,12 @@ public class UserService {
         return user.getId();
     }
 
+    public UserDTO getUserDTOByLastName(String lastName) {
+        User user = userRepository.findByLastNameEquals(lastName);
+        UserDTO userDTO = (modelMapper.convert(user));
+        return userDTO;
+    }
+
     public List<UserDTO> getAllUserDTOs() {
         List<User> allUsers = userRepository.findAll();
         List<UserDTO> allUserDTOS = new ArrayList<>();
@@ -67,32 +73,31 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public OccupiedPlaceInSchemeDTO getPlaceIdOfSearchedUser(String lastName) {
+    public List<PlaceDTO> getPlaceIdOfSearchedUser(String lastName) {
         User user = userRepository.findByLastNameEquals(lastName);
-        if (user == null) {
-            return null;
+        List<Place> places = user.getPlaces();
+        for (Place place : places) {
+            Scheme scheme = place.getScheme();
+            scheme.getId();
         }
-        Place place = user.getPlace();
-        Scheme scheme = place.getScheme();
-        scheme.getId();
         OccupiedPlaceInSchemeDTO occupiedPlaceInSchemeDTO = new OccupiedPlaceInSchemeDTO();
-        occupiedPlaceInSchemeDTO.setPlaceId(place.getId());
-        occupiedPlaceInSchemeDTO.setSchemeId(scheme.getId());
         occupiedPlaceInSchemeDTO.setUserId(user.getId());
 
-        return occupiedPlaceInSchemeDTO;
+        List<PlaceDTO> placesDTO = new ArrayList<>();
+
+        for (Place place : places) {
+            placesDTO.add(modelMapper.convert(place));
+        }
+        return placesDTO;
     }
 
     public void bookPlaceForUser(UserDTO userDTO, PlaceDTO placeDTO) {
-        userDTO.setPlaceId(placeDTO.getId());
         User user = userRepository.getOne(userDTO.getId());
         Place place = placeRepository.getOne(placeDTO.getId());
-        user.setPlace(place);
+        List<Place> places = user.getPlaces();
+        places.add(place);
+        user.setPlaces(places);
         userRepository.save(user);
     }
-
-
-
-
 
 }

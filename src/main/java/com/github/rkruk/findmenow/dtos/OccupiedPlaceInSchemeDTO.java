@@ -1,6 +1,7 @@
 package com.github.rkruk.findmenow.dtos;
 
 
+import java.util.List;
 import java.util.Objects;
 
 public class OccupiedPlaceInSchemeDTO {
@@ -12,11 +13,6 @@ public class OccupiedPlaceInSchemeDTO {
         return Objects.equals(PlaceId, that.PlaceId) &&
                 Objects.equals(SchemeId, that.SchemeId) &&
                 Objects.equals(UserId, that.UserId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(PlaceId, SchemeId, UserId);
     }
 
     public Long getPlaceId() {

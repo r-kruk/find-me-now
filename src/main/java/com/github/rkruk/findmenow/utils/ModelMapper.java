@@ -9,6 +9,9 @@ import com.github.rkruk.findmenow.models.Scheme;
 import com.github.rkruk.findmenow.models.User;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class ModelMapper {
 
@@ -22,9 +25,12 @@ public class ModelMapper {
     }
 
     public UserDTO convert(User user) {
-        Long placeId = null;
-        if (user.getPlace() != null) {
-            placeId = user.getPlace().getId();
+        List<Long> placesId = new ArrayList<>();
+        if (user.getPlaces() != null) {
+            List<Place> places = user.getPlaces();
+            for (Place place : places) {
+                placesId.add(place.getId());
+            }
         }
         return new UserDTO(
                 user.getId(),
@@ -33,7 +39,7 @@ public class ModelMapper {
                 user.getLastName(),
                 user.getActive(),
                 user.getRole(),
-                placeId);
+                placesId);
     }
 
     public PlaceDTO convert(Place place) {
@@ -49,7 +55,5 @@ public class ModelMapper {
                 place.getCoordinateY(),
                 schemeId);
     }
-
-
 
 }

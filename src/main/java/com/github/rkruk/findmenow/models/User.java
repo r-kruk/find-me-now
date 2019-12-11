@@ -3,6 +3,7 @@ package com.github.rkruk.findmenow.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,6 +22,6 @@ public class User extends BaseEntity {
     private String lastName;
     private Boolean active;
     private String role;
-    @OneToOne
-    private Place place;
+    @OneToMany
+    private List<Place> places;
 }

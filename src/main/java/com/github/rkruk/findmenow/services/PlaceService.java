@@ -55,8 +55,11 @@ public class PlaceService {
         List<User> userOccupyingPlaces = userRepository.findAll();
         List<PlaceDTO> availablePlacesDTO = new ArrayList<>();
         for (User user : userOccupyingPlaces) {
-            if (user.getPlace() != null) {
-                availablePlaces.remove(placeRepository.getOne(user.getPlace().getId()));
+            if (user.getPlaces() != null) {
+                List<Place> places = user.getPlaces();
+                for (Place place : places) {
+                    availablePlaces.remove(placeRepository.getOne(place.getId()));
+                }
             }
         }
         for (Place place : availablePlaces) {
@@ -71,4 +74,15 @@ public class PlaceService {
         PlaceDTO placeDTO = modelMapper.convert(place);
         return placeDTO;
     }
+
+    public List<PlaceDTO> getPlaceDTOSByUser(Long id) {
+        User user = userRepository.getOne(id);
+        List<Place> places = user.getPlaces();
+        List<PlaceDTO> userPlacesDTO = new ArrayList<>();
+        for (Place place : places) {
+            PlaceDTO placeDTO = modelMapper.convert(place);
+            userPlacesDTO.add(placeDTO);
+        }
+        return userPlacesDTO;
+     }
 }

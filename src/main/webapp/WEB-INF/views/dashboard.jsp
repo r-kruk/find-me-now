@@ -40,33 +40,42 @@
             <div class="col-1"></div>
             <div class="col-1">
                 <c:forEach items="${allActiveSchemeDTOS}" var="schemeDTO" varStatus="schemeDAOStatus">
-                    <a href="/?id=${schemeDTO.id}" class="btn btn-primary float-right d-none d-lg-block">${schemeDTO.name}</a>
-                    <a href="/?id=${schemeDTO.id}" class="btn btn-primary float-right d-block d-lg-none">${schemeDTO.id}</a>
-                    <br>
-                    <br>
+                        <c:if test="${schemeIds.contains(schemeDTO.id)}">
+                            <a href="/?id=${schemeDTO.id}&user=${lastName}" class="btn btn-primary float-right">${schemeDTO.name}</a>
+                            <br>
+                            <br>
+                        </c:if>
+                        <c:if test="${!schemeIds.contains(schemeDTO.id)}">
+                            <a href="/?id=${schemeDTO.id}&user=${lastName}" class="btn btn-secondary float-right">${schemeDTO.name}</a>
+                            <br>
+                            <br>
+                        </c:if>
                 </c:forEach>
             </div>
             <div class="col-8">
-                    <img src="/scheme?id=${visibleSchemeId}" class="img-fluid w-100" alt="Scheme" id="image">
-                <c:if test="${coordinateX > 0 && coordinateY > 0}">
-                    <div class="h1">
-                        <i class="fa fa-street-view" id="place" style="display: none"></i>
-                        <script>
-                            (function() {
-                                var schemeWidth = document.getElementById("image").clientWidth;
-                                var schemeHeight = document.getElementById("image").clientHeight;
-                                var place = document.getElementById("place");
-                                place.style.display = '';
-                                place.style.color = 'red';
-                                place.style.position = 'absolute';
-                                place.style.left = Number(${coordinateX}) / 100 * schemeWidth + 5 + '';
-                                place.style.top = Number(${coordinateY}) / 100 * schemeHeight - 25 + '';
-                            })();
-                        </script>
-                    </div>
+                <c:if test="${visibleSchemeId == 0}">
+                    <img src="/scheme?id=${allActiveSchemeDTOS.get(0).id}" class="img-fluid w-100" alt="Scheme">
                 </c:if>
+                <c:if test="${visibleSchemeId != 0}">
+                    <img src="/scheme?id=${visibleSchemeId}" class="img-fluid w-100" alt="Scheme">
+                </c:if>
+                <c:forEach items="${placeDTOS}" var="placeDTO">
+                    <script>
+                        (function(){
+                            console.log("cos jest " + ${placeDTO.getSchemeId()});
+                        })();
+                    </script>
+                    <c:if test="${placeDTO.getSchemeId() == visibleSchemeId}">
+                        <div class="h1">
+                            <i class="fa fa-map-marker" style="color: blue; position: absolute;
+                                    left: ${placeDTO.coordinateX + 0}; top: ${placeDTO.coordinateY - 20}"></i>
+                        </div>
+                    </c:if>
+                </c:forEach>
+
+
             </div>
-            <div class="col-1"></div>
+            <div class="col-1">${placeDTOS.size()}</div>
         </c:if>
     </div>
 </div>
