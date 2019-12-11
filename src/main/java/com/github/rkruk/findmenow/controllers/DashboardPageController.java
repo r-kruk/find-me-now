@@ -56,6 +56,9 @@ public class DashboardPageController {
     @PostMapping
     public String userToBeFound(String search) {
         OccupiedPlaceInSchemeDTO occupiedPlaceInSchemeDTO = userService.getPlaceIdOfSearchedUser(search);
+        if (occupiedPlaceInSchemeDTO == null) {
+            return "redirect:/";
+        }
         PlaceDTO placeDTO = placeService.getPlaceDTOById(occupiedPlaceInSchemeDTO.getPlaceId());
         SchemeDTO schemeDTO = schemeService.getSchemeDTOById(occupiedPlaceInSchemeDTO.getSchemeId());
         UserDTO userDTO = userService.getOne(occupiedPlaceInSchemeDTO.getUserId());
