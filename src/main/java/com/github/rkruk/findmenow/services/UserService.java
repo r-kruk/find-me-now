@@ -69,6 +69,9 @@ public class UserService {
 
     public OccupiedPlaceInSchemeDTO getPlaceIdOfSearchedUser(String lastName) {
         User user = userRepository.findByLastNameEquals(lastName);
+        if (user == null) {
+            return null;
+        }
         Place place = user.getPlace();
         Scheme scheme = place.getScheme();
         scheme.getId();
