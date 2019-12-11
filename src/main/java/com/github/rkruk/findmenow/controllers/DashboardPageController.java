@@ -37,21 +37,47 @@ public class DashboardPageController {
     }
 
 
+//    @GetMapping
+//    public String showDashboardPage(Model model,
+//                                    @RequestParam(required = false, defaultValue = "0", name = "id") Long visibleSchemeId,
+//                                    @RequestParam(required = false, defaultValue = "-1", name = "x") Long coordinateX,
+//                                    @RequestParam(required = false, defaultValue = "-1", name = "y") Long coordinateY,
+//                                    @RequestParam(required = false, defaultValue = "", name = "lastName") String lastName) {
+//        List<SchemeDTO> allActiveSchemeDTOS = schemeService.getAllActiveSchemeDTOs();
+//        model.addAttribute("allActiveSchemeDTOS", allActiveSchemeDTOS);
+//        model.addAttribute("visibleSchemeId", visibleSchemeId);
+//        model.addAttribute("coordinateX", coordinateX);
+//        model.addAttribute("coordinateY", coordinateY);
+//        model.addAttribute("lastName", lastName);
+//        return "/WEB-INF/views/dashboard.jsp";
+//    }
+
     @GetMapping
     public String showDashboardPage(Model model,
                                     @RequestParam(required = false, defaultValue = "0", name = "id") Long visibleSchemeId,
-                                    @RequestParam(required = false, defaultValue = "-1", name = "x") Long coordinateX,
-                                    @RequestParam(required = false, defaultValue = "-1", name = "y") Long coordinateY,
-                                    @RequestParam(required = false, defaultValue = "", name = "lastName") String lastName) {
+                                    @RequestParam(required = false) String user,
+                                    RedirectAttributes redirectAttributes) {
         List<SchemeDTO> allActiveSchemeDTOS = schemeService.getAllActiveSchemeDTOs();
+
+        if (user != null) {
+            UserDTO userDTO = userService.getUserDTOByLastName(user);
+
+            List<PlaceDTO> placeDTOS = placeService.getPlaceDTOSByUser(userDTO.getId());
+            HashSet<Long> schemeIds = new HashSet<>();
+            for (PlaceDTO placeDTO : placeDTOS) {
+                Long schemeId = placeDTO.getSchemeId();
+                schemeIds.add(schemeId);
+            }
+            model.addAttribute("placeDTOS", placeDTOS);
+            model.addAttribute("schemeIds", schemeIds);
+            model.addAttribute("lastName", user);
+        }
+
         model.addAttribute("allActiveSchemeDTOS", allActiveSchemeDTOS);
         model.addAttribute("visibleSchemeId", visibleSchemeId);
-        model.addAttribute("coordinateX", coordinateX);
-        model.addAttribute("coordinateY", coordinateY);
-        model.addAttribute("lastName", lastName);
+
         return "/WEB-INF/views/dashboard.jsp";
     }
-
 
 
 

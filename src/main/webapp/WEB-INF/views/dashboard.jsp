@@ -40,18 +40,18 @@
             <div class="col-1"></div>
             <div class="col-1">
                 <c:forEach items="${allActiveSchemeDTOS}" var="schemeDTO" varStatus="schemeDAOStatus">
-                    <c:forEach items="${schemeIds}" var="schemeId">
-                        <c:if test="${schemeDTO.id == schemeId}">
+<%--                    <c:forEach items="${schemeIds}" var="schemeId">--%>
+                        <c:if test="${schemeIds.contains(schemeDTO.id)}">
                             <a href="/?id=${schemeDTO.id}&user=${lastName}" class="btn btn-primary float-right">${schemeDTO.name}</a>
                             <br>
                             <br>
                         </c:if>
-                        <c:if test="${schemeDTO.id != schemeId}">
-                            <a href="/?id=${schemeDTO.id}" class="btn btn-secondary float-right">${schemeDTO.name}</a>
+                        <c:if test="${!schemeIds.contains(schemeDTO.id)}">
+                            <a href="/?id=${schemeDTO.id}&user=${lastName}" class="btn btn-secondary float-right">${schemeDTO.name}</a>
                             <br>
                             <br>
                         </c:if>
-                    </c:forEach>
+<%--                    </c:forEach>--%>
                 </c:forEach>
             </div>
             <div class="col-8">
@@ -62,10 +62,15 @@
                     <img src="/scheme?id=${visibleSchemeId}" class="img-fluid w-100" alt="Scheme">
                 </c:if>
                 <c:forEach items="${placeDTOS}" var="placeDTO">
+                    <script>
+                        (function(){
+                            console.log("cos jest " + ${placeDTO.getSchemeId()});
+                        })();
+                    </script>
                     <c:if test="${placeDTO.getSchemeId() == visibleSchemeId}">
                         <div class="h1">
                             <i class="fa fa-map-marker" style="color: blue; position: absolute;
-                                    left: ${placeDTO.coordinateX +10}; top: ${placeDTO.coordinateY - 10}"></i>
+                                    left: ${placeDTO.coordinateX + 0}; top: ${placeDTO.coordinateY - 20}"></i>
                         </div>
                     </c:if>
                 </c:forEach>
