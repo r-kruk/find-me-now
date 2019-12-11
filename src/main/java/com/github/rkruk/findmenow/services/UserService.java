@@ -46,6 +46,12 @@ public class UserService {
         return user.getId();
     }
 
+    public UserDTO getUserDTOByLastName(String lastName) {
+        User user = userRepository.findByLastNameEquals(lastName);
+        UserDTO userDTO = (modelMapper.convert(user));
+        return userDTO;
+    }
+
     public List<UserDTO> getAllUserDTOs() {
         List<User> allUsers = userRepository.findAll();
         List<UserDTO> allUserDTOS = new ArrayList<>();

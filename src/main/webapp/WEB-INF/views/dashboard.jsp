@@ -40,9 +40,18 @@
             <div class="col-1"></div>
             <div class="col-1">
                 <c:forEach items="${allActiveSchemeDTOS}" var="schemeDTO" varStatus="schemeDAOStatus">
-                    <a href="/?id=${schemeDTO.id}" class="btn btn-primary float-right">${schemeDTO.name}</a>
-                    <br>
-                    <br>
+                    <c:forEach items="${schemeIds}" var="schemeId">
+                        <c:if test="${schemeDTO.id == schemeId}">
+                            <a href="/?id=${schemeDTO.id}&user=${lastName}" class="btn btn-primary float-right">${schemeDTO.name}</a>
+                            <br>
+                            <br>
+                        </c:if>
+                        <c:if test="${schemeDTO.id != schemeId}">
+                            <a href="/?id=${schemeDTO.id}" class="btn btn-secondary float-right">${schemeDTO.name}</a>
+                            <br>
+                            <br>
+                        </c:if>
+                    </c:forEach>
                 </c:forEach>
             </div>
             <div class="col-8">
@@ -52,14 +61,22 @@
                 <c:if test="${visibleSchemeId != 0}">
                     <img src="/scheme?id=${visibleSchemeId}" class="img-fluid w-100" alt="Scheme">
                 </c:if>
-                <c:if test="${coordinateX > 0 && coordinateY > 0}">
-                    <div class="h1">
-                        <i class="fa fa-map-marker"
-                           style="color: blue; position: absolute; left: ${coordinateX + 10}; top: ${coordinateY - 10}"></i>
-                    </div>
-                </c:if>
+                <c:forEach items="${placeDTOS}" var="placeDTO">
+                    <c:if test="${placeDTO.getSchemeId() == visibleSchemeId}">
+                        <div class="h1">
+                            <i class="fa fa-map-marker" style="color: blue; position: absolute;
+                                    left: ${placeDTO.coordinateX +10}; top: ${placeDTO.coordinateY - 10}"></i>
+                        </div>
+                    </c:if>
+                </c:forEach>
+                    <%--       jezeli idSchematu z danego place DTO zgadza sie z tym, ktory jest wyświttlany to for eachem wyswietlam place
+                    for each --%>
+                    <%--                X i Y pobrac z PlaceDTO  i podac w <i></i>  --%>
+<%--                <c:if test="${coordinateX > 0 && coordinateY > 0}">--%>
+
+
             </div>
-            <div class="col-1"></div>
+            <div class="col-1">${placeDTOS.size()}</div>
         </c:if>
     </div>
 </div>
