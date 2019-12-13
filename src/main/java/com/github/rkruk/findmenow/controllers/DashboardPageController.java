@@ -55,8 +55,7 @@ public class DashboardPageController {
     @GetMapping
     public String showDashboardPage(Model model,
                                     @RequestParam(required = false, defaultValue = "0", name = "id") Long visibleSchemeId,
-                                    @RequestParam(required = false) String user,
-                                    RedirectAttributes redirectAttributes) {
+                                    @RequestParam(required = false) String user) {
         List<SchemeDTO> allActiveSchemeDTOS = schemeService.getAllActiveSchemeDTOs();
 
         if (user != null && user.length() > 0) {
@@ -94,14 +93,10 @@ public class DashboardPageController {
             Long schemeId = placeDTO.getSchemeId();
             schemeIds.add(schemeId);
         }
-//        for each po PlaceDTOS
-//        creata Hash Set fillde by Schem ID
-
 
         redirectAttributes.addFlashAttribute("placeDTOS", placeDTOS);
         redirectAttributes.addFlashAttribute("schemeIds", schemeIds);
         redirectAttributes.addFlashAttribute("lastName", search);
-//add Hash set to flash attributes
 
         return "redirect:/";
 
