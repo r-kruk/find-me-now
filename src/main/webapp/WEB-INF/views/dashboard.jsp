@@ -20,14 +20,8 @@
             <form method="post" action="/?id=${visibleSchemeId}">
                 <div class="form-row">
                     <div class="col-11 form-group">
-                        <c:if test="${lastName == null}">
-                            <input type="text" required name="search" id="search" class="form-control"
-                                   placeholder="Podaj nazwisko"/>
-                        </c:if>
-                        <c:if test="${lastName != null}">
                         <input type="text" required name="search" id="search" class="form-control"
-                               placeholder="${lastName}"/>
-                        </c:if>
+                               placeholder="Podaj nazwisko"/>
                     </div>
                     <div class="col-1 form-group">
                         <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> Szukaj</button>
@@ -59,27 +53,29 @@
                 </c:forEach>
             </div>
             <div class="col-8">
-                    <img src="/scheme?id=${visibleSchemeId}" class="img-fluid w-100" alt="Scheme" id="image">
+                <c:if test="${visibleSchemeId == 0}">
+                    <img src="/scheme?id=${allActiveSchemeDTOS.get(0).id}" class="img-fluid w-100" alt="Scheme">
+                </c:if>
+                <c:if test="${visibleSchemeId != 0}">
+                    <img src="/scheme?id=${visibleSchemeId}" class="img-fluid w-100" alt="Scheme">
+                </c:if>
                 <c:forEach items="${placeDTOS}" var="placeDTO">
+                    <script>
+                        (function(){
+                            console.log("cos jest " + ${placeDTO.getSchemeId()});
+                        })();
+                    </script>
                     <c:if test="${placeDTO.getSchemeId() == visibleSchemeId}">
                         <div class="h1">
-                            <i class="fa fa-street-view" style="display: none" id="${placeDTO.id}"></i>
-                            <script>
-                                (function() {
-                                    var schemeWidth = document.getElementById("image").clientWidth;
-                                    var schemeHeight = document.getElementById("image").clientHeight;
-                                    var place = document.getElementById("${placeDTO.id}");
-                                    place.style.display = '';
-                                    place.style.color = 'red';
-                                    place.style.position = 'absolute';
-                                    place.style.left = Number(${placeDTO.coordinateX}) / 100 * schemeWidth + 5 + '';
-                                    place.style.top = Number(${placeDTO.coordinateY}) / 100 * schemeHeight - 25 + '';
-                                })();
-                            </script>
+                            <i class="fa fa-map-marker" style="color: blue; position: absolute;
+                                    left: ${placeDTO.coordinateX + 0}; top: ${placeDTO.coordinateY - 20}"></i>
                         </div>
                     </c:if>
                 </c:forEach>
-            </div></div>
+
+
+            </div>
+            <div class="col-1">${placeDTOS.size()}</div>
         </c:if>
     </div>
 </div>
