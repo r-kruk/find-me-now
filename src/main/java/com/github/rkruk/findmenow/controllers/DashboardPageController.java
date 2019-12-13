@@ -59,7 +59,7 @@ public class DashboardPageController {
                                     RedirectAttributes redirectAttributes) {
         List<SchemeDTO> allActiveSchemeDTOS = schemeService.getAllActiveSchemeDTOs();
 
-        if (user != null) {
+        if (user != null && user.length() > 0) {
             UserDTO userDTO = userService.getUserDTOByLastName(user);
 
             List<PlaceDTO> placeDTOS = placeService.getPlaceDTOSByUser(userDTO.getId());
